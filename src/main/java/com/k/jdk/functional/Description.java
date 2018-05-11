@@ -7,4 +7,7 @@ package com.k.jdk.functional;
  * 2018/5/11
  **/
 public class Description {
+    public static void main(String[] args) {
+
+    }
 }
