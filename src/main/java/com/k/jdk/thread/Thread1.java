@@ -11,6 +11,11 @@ package com.k.jdk.thread;
  * 2018/5/11
  **/
 public class Thread1 {
+    /**
+     * 线程总共有几种状态：新建，可运行，正在运行，死亡，阻塞
+     * 阻塞可以细分为 block，wait
+     * @param args
+     */
     public static void main(String[] args) {
 
     }

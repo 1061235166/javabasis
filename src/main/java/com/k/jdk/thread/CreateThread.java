@@ -66,4 +66,10 @@ public class CreateThread {
         Object o = future.get();
     }
 
+    /**
+     * 使用线程池创建线程
+     */
+    public static void create6(){
+        Executors.newSingleThreadExecutor().execute(()-> System.out.println("执行线程"));
+    }
 }
