@@ -2,10 +2,7 @@ package com.k.google.gson;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 
 import java.util.*;
 
@@ -46,11 +43,19 @@ public class RebuildJson {
             }
         }
         System.out.println(temp);
-        JsonObject asJsonObject = temp.getAsJsonObject();
-        asJsonObject.addProperty("h",444);
-        asJsonObject.addProperty("k",33);
-        System.out.println("==============");
-        System.out.println(gson.toJson(jsonObject));
+        //如果是json对象
+        if(temp.isJsonObject()){
+            JsonObject asJsonObject = temp.getAsJsonObject();
+            asJsonObject.addProperty("h",444);
+            asJsonObject.addProperty("k",33);
+            System.out.println("==============");
+            System.out.println(gson.toJson(jsonObject));
+
+        }
+        //如果是json数组xxx
+        if(temp.isJsonArray()){
+            JsonArray asJsonArray = temp.getAsJsonArray();
+        }
     }
 
     public static String generateJson(){
