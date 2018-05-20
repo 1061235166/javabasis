@@ -46,11 +46,10 @@ public class RebuildJson {
         //如果是json对象
         if(temp.isJsonObject()){
             JsonObject asJsonObject = temp.getAsJsonObject();
-            asJsonObject.addProperty("h",444);
-            asJsonObject.addProperty("k",33);
+            asJsonObject.addProperty("h","jkdlsajkl");
+            asJsonObject.addProperty("k","jd9au98d7u98a98dsa");
             System.out.println("==============");
             System.out.println(gson.toJson(jsonObject));
-
         }
         //如果是json数组xxx
         if(temp.isJsonArray()){
