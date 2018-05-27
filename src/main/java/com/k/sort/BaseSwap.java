@@ -1,6 +1,7 @@
 package com.k.sort;
 
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by k on 2018/5/25.
@@ -31,5 +32,19 @@ public class BaseSwap {
 
     public static String toString(int[]ints){
         return Arrays.toString(ints);
+    }
+
+    public static int [] randomArray(){
+        int [] ints = new int[15];
+        Random random = new Random();
+        for(int i=0;i<ints.length;i++){
+            int nextInt = random.nextInt(1000);
+            ints[i] = nextInt;
+        }
+        return ints;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(randomArray()));
     }
 }
