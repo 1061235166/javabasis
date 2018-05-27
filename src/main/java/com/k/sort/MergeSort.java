@@ -14,4 +14,22 @@ public class MergeSort extends BaseSwap {
     public static void sort(int[]ints){
 
     }
+
+    private static void mergeSort(int [] ints,int low,int mid,int high){
+        int i=low;
+        int j=mid+1;
+        int [] copy = new int[ints.length];
+        System.arraycopy(ints,low,copy,0,ints.length);
+        for(int k=low;k<=high;k++){
+            if(i>mid){
+                ints[k]=copy[j++];
+            }else if(j>high){
+                ints[k]=copy[i++];
+            }else if(copy[j]>copy[i]){
+                ints[k]=copy[j++];
+            }else {
+                ints[k]=copy[i++];
+            }
+        }
+    }
 }
