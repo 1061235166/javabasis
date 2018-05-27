@@ -9,15 +9,18 @@ import java.util.Arrays;
  * Created by k on 2018/5/25.
  */
 public class SelectSort extends BaseSwap{
+
     public static void sort(int [] ints){
         for(int i=0;i<ints.length;i++){
-            for(int j=i;j<ints.length;j++){
-                int a = ints[i];
+            int min = i;
+            for(int j=i+1;j<ints.length;j++){
+                int a = ints[min];
                 int b = ints[j];
                 if(a>b){
-                    swap(ints,i,j);
+                    min = j;
                 }
             }
+            swap(ints,i,min);
         }
     }
 
@@ -27,5 +30,4 @@ public class SelectSort extends BaseSwap{
         sort(ints);
         System.out.println(Arrays.toString(ints));
     }
-
 }
