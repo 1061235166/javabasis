@@ -1,5 +1,7 @@
 package com.k.sort;
 
+import java.util.Arrays;
+
 /**
  * Created by k on 2018/5/25.
  */
@@ -25,6 +27,9 @@ public class BaseSwap {
             System.out.println("indexa="+a+"indexb="+b);
             throw new RuntimeException("indexa="+a+"indexb="+b);
         }
+    }
 
+    public static String toString(int[]ints){
+        return Arrays.toString(ints);
     }
 }
