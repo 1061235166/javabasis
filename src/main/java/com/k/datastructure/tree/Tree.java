@@ -4,7 +4,7 @@ package com.k.datastructure.tree;
  * 树的节点
  * Created by wyk on 2018/5/20.
  */
-public class Tree<T> {
+public class Tree<T extends Comparable<T>> {
     //左节点
     private Tree<T> left;
     //右节点
