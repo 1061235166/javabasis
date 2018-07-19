@@ -3,7 +3,7 @@ package com.k.jdk.thread;
 /**
  *
  * yeild方法会放弃时间片，让别的线程有机会执行
- * created by wyk
+ * created by k
  * 2018/5/11
  **/
 public class ThreadMethod {

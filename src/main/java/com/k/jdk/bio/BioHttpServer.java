@@ -8,7 +8,7 @@ import java.nio.channels.SocketChannel;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * created by wyk
+ * created by k
  * 2018/6/15
  **/
 public class BioHttpServer extends Thread{

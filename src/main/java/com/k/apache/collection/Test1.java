@@ -5,7 +5,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import java.util.Collection;
 
 /**
- * Created by wyk on 2018/5/15.
+ * Created by k on 2018/5/15.
  */
 public class Test1 {
     public static void main(String[] args) {

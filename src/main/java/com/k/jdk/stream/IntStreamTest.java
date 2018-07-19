@@ -3,7 +3,7 @@ package com.k.jdk.stream;
 import java.util.stream.IntStream;
 
 /**
- * Created by wyk on 2018/5/12.
+ * Created by k on 2018/5/12.
  */
 public class IntStreamTest {
 

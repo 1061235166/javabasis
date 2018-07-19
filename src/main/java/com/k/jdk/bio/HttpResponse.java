@@ -3,7 +3,7 @@ package com.k.jdk.bio;
 import java.util.Map;
 
 /**
- * created by wyk
+ * created by k
  * 2018/6/15
  **/
 public class HttpResponse {

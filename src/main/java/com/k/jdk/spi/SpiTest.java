@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- * created by wyk
+ * created by k
  * 2018/7/19
  **/
 public class SpiTest {
@@ -32,6 +32,6 @@ public class SpiTest {
 			public String getCategoryName() {
 				return "error";
 			}
-		}));
+		}).getClass());
 	}
 }

@@ -1,7 +1,7 @@
 package com.k.jdk.spi;
 
 /**com.k.jdk.spi.SpiInterface
- * created by wyk
+ * created by k
  * 2018/7/19
  **/
 public interface SpiInterface {

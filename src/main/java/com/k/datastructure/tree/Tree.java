@@ -2,7 +2,7 @@ package com.k.datastructure.tree;
 
 /**
  * 树的节点
- * Created by wyk on 2018/5/20.
+ * Created by k on 2018/5/20.
  */
 public class Tree<T extends Comparable<T>> {
     //左节点

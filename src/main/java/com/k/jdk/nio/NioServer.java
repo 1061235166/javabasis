@@ -53,7 +53,8 @@ public class NioServer {
 						Iterator<SelectionKey> keyIterator = set.iterator();
 						while (keyIterator.hasNext()) {
 							SelectionKey key = keyIterator.next();
-							if (key.isReadable()) try {
+							if (key.isReadable())
+								try {
 								SocketChannel clientChannel = (SocketChannel) key.channel();
 								ByteBuffer byteBuffer = ByteBuffer.allocate(1024);/* (3) 读取数据以块为单位批量读取*/
 								clientChannel.read(byteBuffer);

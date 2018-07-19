@@ -2,7 +2,7 @@ package com.k.datastructure.queue;
 
 /**
  * 链表实现的队列
- * created by wyk
+ * created by k
  * 2018/6/12
  **/
 public class LinkedQueue<T> implements IQueue<T> {

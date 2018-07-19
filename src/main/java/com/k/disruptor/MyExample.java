@@ -9,7 +9,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * created by wyk
+ * 基本用法
+ * created by k
  * 2018/7/19
  **/
 public class MyExample {

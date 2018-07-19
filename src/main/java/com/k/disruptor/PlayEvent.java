@@ -1,7 +1,7 @@
 package com.k.disruptor;
 
 /**
- * created by wyk
+ * created by k
  * 2018/7/19
  **/
 public class PlayEvent {
