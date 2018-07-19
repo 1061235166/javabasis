@@ -1,6 +1,6 @@
 package com.k.jdk.spi;
 
-/**
+/**com.k.jdk.spi.SpiInterface
  * created by wyk
  * 2018/7/19
  **/

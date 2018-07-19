@@ -1,6 +1,5 @@
 package com.k.jdk.spi;
 
-import sun.security.provider.ConfigFile;
 
 /**
  * created by wyk
