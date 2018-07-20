@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * created by wyk
+ * created by k
  * 2018/6/15
  **/
 public class BioHttpClient extends Thread{

@@ -6,13 +6,13 @@ import java.net.Socket;
 import java.nio.channels.Selector;
 
 /**
- * created by wyk
+ * created by k
  * 2018/6/15
  **/
 public class Client {
 	public static void main(String[] args) throws IOException {
 		Socket socket =new Socket();
-		socket.connect(new InetSocketAddress(8080));
+		socket.connect(new InetSocketAddress(8000));
 		socket.getOutputStream().write("helloworld".getBytes());
 		socket.getOutputStream().flush();
 		socket.close();

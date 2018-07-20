@@ -11,10 +11,28 @@ import java.util.Arrays;
 public class BubbleSort extends BaseSwap{
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random));
-        sort(random);
+        sort2(random);
         System.out.println(Arrays.toString(random));
 
     }
+
+	/**
+	 * 冒泡排序
+	 * @param input
+	 */
+	public static void sort2(int [] input){
+		int length = input.length;
+		for(int i=length-1;i>=0;i--){
+			for(int j=0;j<i;j++){
+//				System.out.println(i+"_"+j);
+				int v1 = input[j];
+				int v2 = input[j+1];
+				if(v1>v2){
+					swap(input,j,j+1);
+				}
+			}
+		}
+	}
 
     public static void sort(int [] ints){
         boolean swap;
