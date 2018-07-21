@@ -1,4 +1,4 @@
-package com.k.sort;
+package com.k.sort.swap;
 
 import java.util.Arrays;
 import java.util.Random;

@@ -1,5 +1,7 @@
 package com.k.sort;
 
+import com.k.sort.swap.BaseSwap;
+
 import java.util.Arrays;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * 依次执行，每轮过后剩余的最大元素都会靠右边
  * Created by k on 2018/5/25.
  */
-public class BubbleSort extends BaseSwap{
+public class BubbleSort extends BaseSwap {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random));
         sort2(random);

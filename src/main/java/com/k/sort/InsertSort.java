@@ -1,5 +1,7 @@
 package com.k.sort;
 
+import com.k.sort.swap.BaseSwap;
+
 import java.util.Arrays;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * 所有元素都是有序的了
  * Created by k on 2018/5/27.
  */
-public class InsertSort extends BaseSwap{
+public class InsertSort extends BaseSwap {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random2));

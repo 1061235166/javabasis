@@ -1,5 +1,7 @@
 package com.k.sort;
 
+import com.k.sort.swap.BaseSwap;
+
 import java.util.Arrays;
 
 /**
@@ -9,7 +11,7 @@ import java.util.Arrays;
  * 不稳定排序
  * Created by k on 2018/5/25.
  */
-public class SelectSort extends BaseSwap{
+public class SelectSort extends BaseSwap {
 
     public static void sort(int [] ints){
         for(int i=0;i<ints.length;i++){
