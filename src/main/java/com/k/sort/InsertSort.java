@@ -12,7 +12,7 @@ public class InsertSort extends BaseSwap{
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random2));
-        sort(random2);
+        sort3(random2);
         System.out.println(Arrays.toString(random2));
     }
 
@@ -24,6 +24,30 @@ public class InsertSort extends BaseSwap{
                 if(a>b){
                     swap(ints,i,j);
                 }
+            }
+        }
+    }
+
+
+    public static void sort2(int [] ints){
+        for(int i=1;i<ints.length;i++){
+            int temp = ints[i];
+            int j = i-1;
+            for(;j>=0 && temp > ints[j] ;j--){
+                ints[j]=ints[j+1];
+            }
+            ints[j+1]=temp;
+        }
+    }
+
+    /**
+     *  from 算法第四版
+     * @param inputs
+     */
+    public static void sort3(int [] inputs){
+        for(int i=1;i<inputs.length;i++){
+            for(int j=i;j>0 && inputs[j]<inputs[j-1];j--){
+                swap(inputs,j,j-1);
             }
         }
     }
