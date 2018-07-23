@@ -1,5 +1,7 @@
 package com.k.jdk.stream;
 
+import java.util.Arrays;
+import java.util.OptionalDouble;
 import java.util.stream.IntStream;
 
 /**
@@ -8,10 +10,11 @@ import java.util.stream.IntStream;
 public class IntStreamTest {
 
     public static void main(String[] args) {
-        long count = IntStream.range(0, 10).count();
-        System.out.println(count);
-
-        double asDouble = IntStream.range(0, 101).average().getAsDouble();
-        System.out.println(asDouble);
+		arrayStream();
     }
+
+    public static void arrayStream(){
+		OptionalDouble average = Arrays.stream(new int[]{1, 2, 3, 4, 5}).average();
+		System.out.println(average.getAsDouble());
+	}
 }
