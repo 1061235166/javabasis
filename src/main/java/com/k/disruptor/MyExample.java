@@ -1,12 +1,14 @@
 package com.k.disruptor;
 
-import com.lmax.disruptor.EventHandler;
+import com.lmax.disruptor.BlockingWaitStrategy;
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
+import com.lmax.disruptor.dsl.ProducerType;
 
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * 基本用法
@@ -16,32 +18,36 @@ import java.util.concurrent.Executors;
 public class MyExample {
 
 	public static void main(String[] args) {
-		ExecutorService executorService = Executors.newFixedThreadPool(10);
-		Disruptor disruptor = new Disruptor(()->{
-			return new PlayEvent();
-		},2<<100,executorService);
-
-		EventHandler<PlayEvent>eventEventHandler = new EventHandler<PlayEvent>() {
+		ThreadFactory helloName = new ThreadFactory() {
 			@Override
-			public void onEvent(PlayEvent playEvent, long l, boolean b) throws Exception {
-				System.out.println(playEvent.getName());
-				System.out.println(l);
-				System.out.println(b);
+			public Thread newThread(Runnable r) {
+				return new Thread(r, "helloName");
+			}
+		};
+		ExecutorService executorService = Executors.newFixedThreadPool(10);
+
+		ThreadFactory threadFactory = new ThreadFactory() {
+			@Override
+			public Thread newThread(Runnable r) {
+				return new Thread(r);
 			}
 		};
 
-		disruptor.handleEventsWith(eventEventHandler);
+		Disruptor disruptor = new Disruptor(new MyExampleEventFactory(),2,threadFactory, ProducerType.MULTI, new BlockingWaitStrategy());
 
+
+		disruptor.handleEventsWith(new MyExampleEventHandler());
 
 		RingBuffer<PlayEvent> ringBuffer = disruptor.start();
 
 		for(int i=0;i<100000;i++){
-			long sequence = ringBuffer.next();
-			PlayEvent playEvent = ringBuffer.get(sequence);
+//			long sequence = ringBuffer.next();
+//			PlayEvent playEvent = ringBuffer.get(sequence);
+			PlayEvent playEvent =new PlayEvent();
 			playEvent.setName(UUID.randomUUID().toString());
-			ringBuffer.publish(sequence);
-
+			ringBuffer.publishEvent(new MyExampleEventTranslator(),playEvent.getName());
 		}
+
 		executorService.shutdown();
 		disruptor.shutdown();
 	}
