@@ -9,6 +9,7 @@ import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * 基本用法
@@ -18,23 +19,22 @@ import java.util.concurrent.ThreadFactory;
 public class MyExample {
 
 	public static void main(String[] args) {
-		ThreadFactory helloName = new ThreadFactory() {
-			@Override
-			public Thread newThread(Runnable r) {
-				return new Thread(r, "helloName");
-			}
-		};
+
 		ExecutorService executorService = Executors.newFixedThreadPool(10);
 
 		ThreadFactory threadFactory = new ThreadFactory() {
+
+			private AtomicLong atomicLong = new AtomicLong(1);
+
 			@Override
 			public Thread newThread(Runnable r) {
-				return new Thread(r);
+				long andIncrement = atomicLong.getAndIncrement();
+				System.out.println(andIncrement);
+				return new Thread(r,"disruptor-thread-"+andIncrement);
 			}
 		};
 
 		Disruptor disruptor = new Disruptor(new MyExampleEventFactory(),2,threadFactory, ProducerType.MULTI, new BlockingWaitStrategy());
-
 
 		disruptor.handleEventsWith(new MyExampleEventHandler());
 
