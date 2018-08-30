@@ -3,6 +3,7 @@ package com.k.sort;
 import com.k.sort.swap.BaseSwap;
 
 /**
+ * 希尔排序，把一个数组按照固定间隔分开，对每个分开的数组进行插入排序
  * Created by k on 2018/5/27.
  */
 public class ShellSort extends BaseSwap {
