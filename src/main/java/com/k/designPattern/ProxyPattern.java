@@ -6,11 +6,13 @@ import java.lang.reflect.Proxy;
 
 /**
  * 代理模式
+ * 代理模式在java里的应用一般为aop
  * Created by k on 2018/8/25.
  */
 public class ProxyPattern {
     public static void main(String[] args) {
-        TargetInterface targetInterface = (TargetInterface) Proxy.newProxyInstance(ProxyPattern.class.getClassLoader(), new Class[]{TargetInterface.class}, new ProxyExample(new TargetClass()));
+        TargetInterface targetInterface =
+                (TargetInterface) Proxy.newProxyInstance(ProxyPattern.class.getClassLoader(), new Class[]{TargetInterface.class}, new ProxyExample(new TargetClass()));
         targetInterface.doSomeThing();
     }
 }

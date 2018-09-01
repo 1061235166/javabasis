@@ -1,12 +1,14 @@
 package com.k.jdk.thread;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 自己实现的阻塞队列
  * Created by k on 2018/8/30.
  */
 public class MyBlockingQueue<T> {
@@ -58,6 +60,29 @@ public class MyBlockingQueue<T> {
     }
 
     public static void main(String[] args) {
+        MyBlockingQueue<String>myBlockingQueue = new MyBlockingQueue<>(3);
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        ExecutorService executorService2 = Executors.newFixedThreadPool(10);
+        executorService.execute(()->{
+            for(;;){
+                try {
+                    boolean put = myBlockingQueue.put("");
+                    System.out.println(put);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+//        executorService2.execute(()->{
+//            for(;;){
+//                try {
+//                    String take = myBlockingQueue.take();
+//                    System.out.println("take:"+take);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
 
     }
 }
