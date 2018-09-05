@@ -49,7 +49,7 @@ class Singleton2{
 //懒汉，线程安全
 class Singleton3{
 	private Singleton3(){
-
+		System.out.println("singleton3");
 	}
 
 	private static Singleton3 singleton3;
@@ -78,5 +78,14 @@ class Singleton4{
 			}
 		}
 		return singleton4;
+	}
+}
+
+//饿汉，线程安全
+enum Singleton5{
+	SINGLETON_5;
+
+	public Singleton5 getSingleton5(){
+		return SINGLETON_5;
 	}
 }
