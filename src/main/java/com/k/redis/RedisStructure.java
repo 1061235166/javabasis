@@ -57,6 +57,5 @@ public class RedisStructure {
 		Object o = objectInputStream.readObject();
 		System.out.println(o.getClass());
 
-
 	}
 }
