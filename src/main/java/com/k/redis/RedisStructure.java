@@ -14,7 +14,7 @@ import java.util.List;
  * 2018/8/9
  **/
 public class RedisStructure {
-	static final String host = "192.168.2.128";
+	static final String host = "192.168.18.131";
 	static final int port = 6379;
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
@@ -29,6 +29,7 @@ public class RedisStructure {
 		jedis.set("1","12");
 		jedis.close();
 	}
+
 
 	public static void list() throws IOException, ClassNotFoundException {
 		Jedis jedis = new Jedis(host,port);
