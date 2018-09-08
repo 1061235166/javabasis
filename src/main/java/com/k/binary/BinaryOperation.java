@@ -7,6 +7,11 @@ public class BinaryOperation {
 
 	public static void main(String[] args) {
 		rightMove();
+//		operationAND();
+//		System.out.println("====");
+//		operationOR();
+		leftMove();
+		rightMove();
 	}
 	/**
 	 * 按位与，两个二进制数字进行对比，从最高位到最低位一一对应，如果对应的位的值都是1，结果就是1，否则是0
@@ -57,8 +62,29 @@ public class BinaryOperation {
 
 	}
 
+
 	/**
-	 * 右移操作
+	 * 左移，将数字的二进制格式往左位移n为并舍弃高位的n位，低位用0补上
+	 * 其实可以左移的结果： a<<b 等价于 a*(b的2次方)
+	 */
+	public static void leftMove(){
+
+		System.out.println(Integer.toString(1,2));
+		//00000000000000000000000000000001		-> 00000000000000000000000000000100
+		System.out.println(1<<2);
+		System.out.println(Integer.parseInt("00000000000000000000000000000100",2));
+		System.out.println(Integer.toBinaryString(2));
+		//00000000000000000000000000000010		-> 00000000000000000000000000001000
+		System.out.println(2<<2);
+		System.out.println(Integer.parseInt("00000000000000000000000000001000",2));
+		System.out.println(Integer.toBinaryString(3));
+		System.out.println(3<<3);
+
+	}
+
+	/**
+	 * >>带符号右移,将数字的二进制格式往右位移n位并舍弃低位的n位，若左操作数是正数，则高位补“0”，若左操作数是负数，则高位补“1”.
+	 * * 右移操作
 	 *  a >> b 将数值 a 的二进制数值从 0 位算起到第 b - 1 位，整体向右方向移动 b 位，符号位不变，高位空出来的位补数值 0。
 	 *  5 >> 1 ===>  1000 0000 0000 0101 >> 1  = 1000 0000 0000 0010 = 2
 	 *	7 >> 2 ===>  1000 0000 0000 0111 >> 2  = 1000 0000 0000 0001 = 1
@@ -66,8 +92,14 @@ public class BinaryOperation {
 	 *	11 >> 2 ===> 1000 0000 0000 1011 >> 2 = 1000 0000 0000 0010 = 2
 	 */
 	public static void rightMove(){
-		System.out.println(Integer.toBinaryString(5));
-	}
+		//00000000000000000000000000000001		-> 00000000000000000000000000000000
+		System.out.println(1>>2);
+		System.out.println(2>>3);
+		System.out.println(3>>4);
+		System.out.println(0xff>>1);
+		System.out.println(Integer.toBinaryString(0xff));
 
+		System.out.println(-1>>2);
+	}
 
 }
