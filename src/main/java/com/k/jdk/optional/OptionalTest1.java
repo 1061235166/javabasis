@@ -11,6 +11,7 @@ public class OptionalTest1 {
 
 	public static void main(String[] args) {
 		Optional<Object> empty = Optional.empty();
+		//用isPresent判断和if else没区别
 		System.out.println(empty.isPresent());
 		String a= null;
 		String s = Optional.ofNullable(a).orElse("11111");
