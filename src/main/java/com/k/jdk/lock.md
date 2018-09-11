@@ -20,10 +20,16 @@
 
 ##锁消除,锁粗化
 
+
+##共享锁，独占锁
+>共享锁允许同一个时间有个多个线程进入临界区域，比如reentrantreadwritelock
+>独占锁同一个时间只能有一个线程进入临界区域，比如reentrantlock
+
+
 ##可重入锁
 >synchronized，同步块自带可重入功能，一个线程可以尝试获取多次锁。
 
->java reentrantlock，一个线程可以尝试获取多次锁，每次获取后value会加一，释放锁value减一
+>java JUC的reentrantlock，一个线程可以尝试获取多次锁，每次获取后value会加一，释放锁value减一
 
 ##悲观锁和乐观锁
 >悲观锁认为每次都会有其他线程来竞争资源，所以每次都给资源上锁。
