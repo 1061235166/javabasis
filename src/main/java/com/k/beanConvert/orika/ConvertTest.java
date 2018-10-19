@@ -24,5 +24,7 @@ public class ConvertTest {
 		System.out.println(map.getName());
 		System.out.println(map.getPrice());
 		//需要测试一下他和spring beanutil.copyproperties的效率
+
+
 	}
 }
