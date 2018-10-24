@@ -3,7 +3,8 @@
 
 - springAOP
 > 首先要在配置文件引入<aop:aspectj-autoproxy/>标签开启springaop，
-springaop分为两种，一种是动态代理，一种是cglib。动态代理是使用Invocationhandler，因此实现增强类需要提供接口，但是cglib不需要
-<aop:aspectj-autoproxy proxy-target-class="true"/>开启cglib代理
+如果使用了@Aspectj注解，就会使用aspejctj来生成代理，如果被增强类使用了接口，会切换成jdk动态代理来实现aop
+也可以使用 <aop:aspectj-autoproxy proxy-target-class="true"/> 开启cglib代理
+
 - cglib
->动态修改字节码。
+> 动态修改字节码，属于动态代理，不需要接口就能生成增强类
