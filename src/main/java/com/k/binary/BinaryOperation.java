@@ -12,7 +12,19 @@ public class BinaryOperation {
 //		operationOR();
 		leftMove();
 		rightMove();
+		stringToBinary();
 	}
+
+	public static void stringToBinary(){
+		String key = "king";
+		for(char c : key.toCharArray()){
+			int i = c;
+			System.out.println(i);
+			String s = Integer.toBinaryString(i);
+			System.out.println(s);
+		}
+	}
+
 	/**
 	 * 按位与，两个二进制数字进行对比，从最高位到最低位一一对应，如果对应的位的值都是1，结果就是1，否则是0
 	 */
