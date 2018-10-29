@@ -17,12 +17,15 @@ public class BinaryOperation {
 
 	public static void stringToBinary(){
 		String key = "king";
+		StringBuilder sb = new StringBuilder();
 		for(char c : key.toCharArray()){
 			int i = c;
 			System.out.println(i);
 			String s = Integer.toBinaryString(i);
 			System.out.println(s);
+			sb.append(s).append(" ");//高位0不显示
 		}
+		System.out.println(sb.toString());
 	}
 
 	/**
