@@ -1,12 +1,7 @@
 package com.k.redis;
-
-import com.google.common.collect.Lists;
-import com.google.common.primitives.Bytes;
+ 
 import redis.clients.jedis.Jedis;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * redis字符串

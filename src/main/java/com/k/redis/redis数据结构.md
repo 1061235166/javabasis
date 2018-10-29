@@ -4,18 +4,26 @@
 - list
 > 列表，能够从左右插入删除元素，还支持阻塞插入删除
 
-- map 和java的hashmap类似，只能存字符串
-> 
+- map，散列表 
+>和java的hashmap类似，只能存字符串
+ 
 
-- set，无需set，就是map的一个实现，key相当于map的key，value是null
->
+- set，无序set
+>就是map的一个实现，key相当于map的key，value是null
 
-- zset 有序set，存数据的时候可以指定一个分值，可以通过分值的从大到小进行排序
->
+
+- zset 有序set
+>存数据的时候可以指定一个分值，可以通过分值的从大到小进行排序
+
 
 - hyperhyperlog
+>用来对数据进去去重，然后进行不同数据的聚合统计，好处是占用空间小，缺点是有0.81%的统计误差
+用法就是pfadd和pfcount这两个api，用来添加数据和统计数据
+pfmerge可以把两个hll数据的结果合并到一起
 
 
 - bitmap
+>操作对应的数据类型就是字符串，可以用过getbit和setbit操作每一个位上的数据（0和1）
 
 - geo
+>用来将某个经纬度经过计算转换成一维整数的过程，它只是一个普通的 zset 结构。
