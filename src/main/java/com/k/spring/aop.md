@@ -6,5 +6,8 @@
 如果使用了@Aspectj注解，就会使用aspejctj来生成代理，如果被增强类使用了接口，会切换成jdk动态代理来实现aop
 也可以使用 <aop:aspectj-autoproxy proxy-target-class="true"/> 开启cglib代理
 
+>@Aspect、@Pointcut、@Before、@After 等注解都是来自于 AspectJ，但是功能的实现是纯 Spring AOP 自己实现的
+来源于javadoop网站
+
 - cglib
 > 动态修改字节码，属于动态代理，不需要接口就能生成增强类
