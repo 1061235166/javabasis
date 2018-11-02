@@ -81,10 +81,10 @@ public class BinaryOperation {
 
 	/**
 	 * 左移，将数字的二进制格式往左位移n为并舍弃高位的n位，低位用0补上
-	 * 其实可以左移的结果： a<<b 等价于 a*(b的2次方)
+	 * 其实可以左移的结果： a<<b 等价于 a*(2的b次方)
 	 */
 	public static void leftMove(){
-
+		System.out.println("========leftMove start========");
 		System.out.println(Integer.toString(1,2));
 		//00000000000000000000000000000001		-> 00000000000000000000000000000100
 		System.out.println(1<<2);
@@ -94,8 +94,9 @@ public class BinaryOperation {
 		System.out.println(2<<2);
 		System.out.println(Integer.parseInt("00000000000000000000000000001000",2));
 		System.out.println(Integer.toBinaryString(3));
-		System.out.println(3<<3);
-
+		System.out.println(3<<3);//3*2^3
+		System.out.println(-3<<3);
+		System.out.println("========leftMove end========");
 	}
 
 	/**
@@ -106,9 +107,10 @@ public class BinaryOperation {
 	 *	7 >> 2 ===>  1000 0000 0000 0111 >> 2  = 1000 0000 0000 0001 = 1
 	 *	9 >> 3 ===>  1000 0000 0000 1001 >> 3  = 1000 0000 0000 0001 = 1
 	 *	11 >> 2 ===> 1000 0000 0000 1011 >> 2 = 1000 0000 0000 0010 = 2
-	 *	a>>b 相当于 a除以b的2次方
+	 *	a>>b 相当于 a除以2的b次方
 	 */
 	public static void rightMove(){
+		System.out.println("========rightMove end========");
 		//00000000000000000000000000000001		-> 00000000000000000000000000000000
 		System.out.println(1>>2);
 		System.out.println(2>>3);
@@ -117,6 +119,8 @@ public class BinaryOperation {
 		System.out.println(Integer.toBinaryString(0xff));
 
 		System.out.println(-1>>2);
+		System.out.println(100>>3);
+		System.out.println("========rightMove end========");
 	}
 
 	/**
