@@ -13,6 +13,7 @@ public class BinaryOperation {
 		leftMove();
 		rightMove();
 		stringToBinary();
+		unsignedrightMove();
 	}
 
 	public static void stringToBinary(){
@@ -123,7 +124,11 @@ public class BinaryOperation {
 	 * >>>
 	 */
 	public static void unsignedrightMove(){
+		//01无符号右移1位是0
+		System.out.println(1>>>1);
 
+		System.out.println(100>>>2);
+		System.out.println(-100>>>2);
 	}
 
 }
