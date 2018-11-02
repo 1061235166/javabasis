@@ -105,6 +105,7 @@ public class BinaryOperation {
 	 *	7 >> 2 ===>  1000 0000 0000 0111 >> 2  = 1000 0000 0000 0001 = 1
 	 *	9 >> 3 ===>  1000 0000 0000 1001 >> 3  = 1000 0000 0000 0001 = 1
 	 *	11 >> 2 ===> 1000 0000 0000 1011 >> 2 = 1000 0000 0000 0010 = 2
+	 *	a>>b 相当于 a除以b的2次方
 	 */
 	public static void rightMove(){
 		//00000000000000000000000000000001		-> 00000000000000000000000000000000
@@ -115,6 +116,14 @@ public class BinaryOperation {
 		System.out.println(Integer.toBinaryString(0xff));
 
 		System.out.println(-1>>2);
+	}
+
+	/**
+	 * 无符号右移,忽略符号位，空位都以0补齐
+	 * >>>
+	 */
+	public static void unsignedrightMove(){
+
 	}
 
 }
