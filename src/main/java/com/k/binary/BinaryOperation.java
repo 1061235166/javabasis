@@ -128,11 +128,15 @@ public class BinaryOperation {
 	 * >>>
 	 */
 	public static void unsignedrightMove(){
+		System.out.println("unsignedrightMove start");
 		//01无符号右移1位是0
 		System.out.println(1>>>1);
 
 		System.out.println(100>>>2);
 		System.out.println(-100>>>2);
+		System.out.println(Integer.MAX_VALUE>>>1);
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println("unsignedrightMove end");
 	}
 
 }
