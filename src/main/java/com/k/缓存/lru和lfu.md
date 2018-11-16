@@ -1,0 +1,2 @@
+- lru 全称least resently used 最近最少使用
+- lfu 全称least frequently used 使用频率最少
