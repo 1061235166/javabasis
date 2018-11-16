@@ -14,16 +14,16 @@ import java.util.List;
  * 2018/8/9
  **/
 public class RedisStructure {
-	static final String host = "192.168.18.131";
+	static final String host = "192.168.2.136";
 	static final int port = 6379;
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		list();
+		pubsub();
 	}
 
 	public static void string(){
 		Jedis jedis = new Jedis(host,port);
-		jedis.connect();;
+		jedis.connect();
 		String s = jedis.get("1");
 		System.out.println(s);
 		jedis.set("1","12");
@@ -57,6 +57,13 @@ public class RedisStructure {
 		ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
 		Object o = objectInputStream.readObject();
 		System.out.println(o.getClass());
+
+	}
+
+	public static void pubsub(){
+		Jedis jedis = new Jedis(host,port);
+		jedis.pubsubChannels("kkk");
+		jedis.publish("kkk","123123");
 
 	}
 }
