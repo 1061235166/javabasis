@@ -31,51 +31,76 @@ public class LRUCache<K,V>{
 	private V put(K k,V v){
 		V put = cache.put(k, v);
 		if(cache.size()>=max_size){
-
+			removeHeader();
+		}
+		if(cache.containsKey(k)){
 
 		}
+		addToTail(new Entry(k,v));
 		return put;
 	}
 
-	private void movetoLast(Entry entry){
-
+	public V get(K k){
+		V v = cache.get(k);
+		addToTail(new Entry(k,v));
+		return v;
 	}
 
-	private void append(K k,V v){
-		Entry entry =new Entry();
-		entry.k=k;
-		entry.v=v;
+	public V remove(K k){
+		V remove = cache.remove(k);
+		removeEntryFromLinkedList(new Entry(k,null));
+		return remove;
+	}
+
+	private void removeHeader(){
+		Entry<K, V> oldHeader = this.header;
+		Entry preHeader = oldHeader.next;
+		oldHeader = null;
+		this.header = preHeader;
+	}
+
+	private void addToTail(Entry entry){
+//		System.out.println(entry);
+		if(header == null && tail == null){
+			tail = header = entry;
+			header.next=tail;
+			tail.pre=header;
+			return;
+		}
+		Entry<K, V> oldTail = this.tail;
+		oldTail.next = entry;
+		entry.pre =oldTail;
 		entry.next=null;
-		entry.pre=tail;
-		tail = entry;
+		this.tail=entry;
 	}
 
-	private void removeHeader(Entry entry){
+	private void removeEntryFromLinkedList(Entry entry){
+		for(Entry e = tail; !e.equals(entry.k); e = entry.next){
+			Object k = entry.k;
+			if(k.equals(e.k)){
+				Entry a = e.next;
+				Entry pre = e.pre;
+				pre.next = a;
+				a.pre = pre;
+				return;
+			 }
+		}
+	}
 
+	private void foreachEntryLinkedList(){
+		for(Entry e = tail;
+			!e.equals(header) && header.pre!=null;
+			e = e.pre){
+			System.out.println(e.k);
+		}
 	}
 
 	public static void main(String[] args) {
-//		double ceil = Math.ceil(1.1f);
-//		System.out.println(ceil);
-//		System.out.println(Math.ceil(1.6));
-//		System.out.println(Math.floor(1.1));
-//		System.out.println(Math.floor(1.9));
-//		new LinkedHashMap<String,String>(10,0.75f,true);
-//
-//		long a= 4294967296l;
-//		System.out.println(Long.MAX_VALUE>a);
-//		System.out.println(Long.MAX_VALUE+1);
-
-		long r=0;
-
-		for(int i=0;i<48;i++){
-			double pow = Math.pow(2, i);
-			long l = Double.valueOf(pow).longValue();
-			r = r|l;
-			System.out.println(r);
-		}
-		System.out.println(r);
-		System.out.println(4294967296l | 8589934592l);
+		LRUCache<String,String> lruCache = new LRUCache();
+		lruCache.put("1","1");
+		lruCache.put("2","2");
+		lruCache.put("3","3");
+		lruCache.foreachEntryLinkedList();
 	}
 
 	class Entry<K,V>{
@@ -83,6 +108,25 @@ public class LRUCache<K,V>{
 		Entry pre;
 		K k;
 		V v;
+
+		public Entry(K k, V v) {
+			this.k = k;
+			this.v = v;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if(!(obj instanceof Entry)){
+				return false;
+			}
+			Entry entry = (Entry) obj;
+			return entry.k.equals(this.k);
+		}
+
+		@Override
+		public String toString() {
+			return k.toString();
+		}
 	}
 
 }
