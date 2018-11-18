@@ -1,14 +1,13 @@
 package com.k.jdk.thread;
 
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by k on 2018/11/18.
+ * http://www.importnew.com/10815.html  总结的优点和不足
+ *
  */
 public class CompletableFutrueTest {
 
@@ -52,10 +51,8 @@ public class CompletableFutrueTest {
             }
             boolean complete = completableFuture.complete("11111");
         }).start();
-
         String s = completableFuture.get();
         System.out.println(s);
 
     }
-
 }
