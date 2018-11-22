@@ -1,8 +1,13 @@
 package com.k.缓存;
 
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Map;
 
 /**
  * 最近最少使用缓存
@@ -11,17 +16,23 @@ import java.util.LinkedHashMap;
  **/
 public class LRUCache<K,V>{
 
+	@Deprecated
 	private Entry<K,V>header;
 
+	@Deprecated
 	private Entry<K,V>tail;
 
 	private HashMap<K,V>cache;
 
 	private int max_size = 100;
 
+	private LinkedList<K>keys = Lists.newLinkedList();
+
 	public LRUCache(){
 		this.cache = new HashMap<>(100);
 	}
+
+
 
 	public LRUCache(int maxSize){
 		this.max_size= maxSize;
@@ -31,32 +42,32 @@ public class LRUCache<K,V>{
 	private V put(K k,V v){
 		V put = cache.put(k, v);
 		if(cache.size()>=max_size){
-			removeHeader();
+			keys.removeFirst();
 		}
 		if(cache.containsKey(k)){
-
+			cache.remove(k);
 		}
-		addToTail(new Entry(k,v));
+		keys.addLast(k);
 		return put;
 	}
 
 	public V get(K k){
 		V v = cache.get(k);
-		addToTail(new Entry(k,v));
+		if(keys.contains(k)){
+			keys.remove(k);
+		}
+		keys.addLast(k);
 		return v;
 	}
 
 	public V remove(K k){
 		V remove = cache.remove(k);
-		removeEntryFromLinkedList(new Entry(k,null));
+		keys.remove(k);
 		return remove;
 	}
 
 	private void removeHeader(){
-		Entry<K, V> oldHeader = this.header;
-		Entry preHeader = oldHeader.next;
-		oldHeader = null;
-		this.header = preHeader;
+		keys.removeFirst();
 	}
 
 	private void addToTail(Entry entry){
@@ -69,7 +80,7 @@ public class LRUCache<K,V>{
 		}
 		Entry<K, V> oldTail = this.tail;
 		oldTail.next = entry;
-		entry.pre =oldTail;
+		entry.pre = oldTail;
 		entry.next=null;
 		this.tail=entry;
 	}
@@ -88,10 +99,9 @@ public class LRUCache<K,V>{
 	}
 
 	private void foreachEntryLinkedList(){
-		for(Entry e = tail;
-			!e.equals(header) && header.pre!=null;
-			e = e.pre){
-			System.out.println(e.k);
+		ListIterator<K> kListIterator = keys.listIterator();
+		while (kListIterator.hasNext()){
+			System.out.println(kListIterator.next());
 		}
 	}
 
@@ -100,7 +110,16 @@ public class LRUCache<K,V>{
 		lruCache.put("1","1");
 		lruCache.put("2","2");
 		lruCache.put("3","3");
+		lruCache.get("1");
+		lruCache.get("1");
+		lruCache.get("1");
+		lruCache.get("4");
 		lruCache.foreachEntryLinkedList();
+
+		Map<String,String>map = Maps.newHashMap();
+		map.put(null,null);
+
+
 	}
 
 	class Entry<K,V>{
