@@ -80,6 +80,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         BinarySearchTree<Integer>tree = new BinarySearchTree<>();
 
         tree.insert(1);
+        tree.insert(-1);
 
         tree.insert(2);
         tree.insert(99);
@@ -87,9 +88,16 @@ public class BinarySearchTree<T extends Comparable<T>> {
         tree.insert(23);
         tree.insert(231123);
 
+        Node<Integer> integerNode = tree.get(1);
+        System.out.println(integerNode.getRight().getRight());
+
         System.out.println(tree.size);
     }
 
+    /**
+     * 树的节点
+     * @param <T>
+     */
     static class Node<T> {
         private T data;
         private Node<T>parent;
