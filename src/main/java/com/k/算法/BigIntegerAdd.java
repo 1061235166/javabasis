@@ -1,5 +1,6 @@
 package com.k.算法;
 
+import com.google.common.base.Strings;
 import com.google.common.primitives.Ints;
 
 import java.io.File;
@@ -89,6 +90,20 @@ public class BigIntegerAdd {
 		System.out.println("=======================================");
 
 		bigintSum("123123123123123","73821781728371823");
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		System.out.println();
+
+		bigintsum("9128398198329189123","9302190931278490380182390221903890");
 	}
 
 	//思路，使用数组进行计算，把2个数字倒续，从左往右开始计算，每个位相加结果如果大于10，将大于10的部分放到下位里，在下一位的计算中再加上这个数
@@ -174,8 +189,72 @@ public class BigIntegerAdd {
 
 		BigInteger add = new BigInteger("73821781728371823").add(new BigInteger("123123123123123"));
 		System.out.println(add);
-		//	123123123123123
-		//73821781728371823
-		//					51494956
+	}
+
+	public static void bigintsum(String big1,String big2){
+		System.out.println("bigintsum");
+		System.out.println(big1);
+		System.out.println(big2);
+
+		int newLength = Math.max(big1.length(), big2.length())+1;
+
+
+
+		int [] newbig1 = new int[newLength];
+		int [] newbig2 = new int[newLength];
+
+
+		System.out.println("\n");
+		for(int i=big1.length()-1;i>=0;i--){
+//			System.out.print(big1.charAt(i));
+			newbig1[big1.length()-i-1]=big1.charAt(i)-'0';
+		}
+		for(int i=big2.length()-1;i>=0;i--){
+//			System.out.print(big2.charAt(i));
+			newbig2[big2.length()-i-1]=big2.charAt(i)-'0';
+		}
+
+		System.out.println("\n");
+
+		StringBuilder sb1 = new StringBuilder();
+		for(int i =0;i<newbig1.length-1;i++){
+			sb1.append(newbig1[i]);
+		}
+		System.out.println(sb1.toString());
+
+		StringBuilder sb2 = new StringBuilder();
+		for(int i =0;i<newbig2.length-1;i++){
+			sb2.append(newbig2[i]);
+		}
+		System.out.println(sb2.toString());
+
+		int [] resultArray = new int[newLength];
+
+		for(int i=0;i<newLength;i++){
+			int temp = resultArray[i];
+			temp += newbig1[i];
+			temp += newbig2[i];
+
+			if(temp>=10){
+				temp = temp-10;
+				resultArray[i+1] = temp;
+			}
+			resultArray[i]=temp;
+		}
+		StringBuilder stringBuilder = new StringBuilder();
+		boolean findFirst = false;
+		for(int i= resultArray.length-1;i>=0;i--){
+			if(!findFirst){
+				if(resultArray[i]==0){
+					continue;
+				}
+				findFirst=true;
+			}
+			stringBuilder.append(resultArray[i]);
+		}
+
+
+		System.out.println(stringBuilder.toString());
+		System.out.println(new BigInteger(big1).add(new BigInteger(big2)));
 	}
 }
