@@ -11,7 +11,7 @@ package com.k.算法;
  * created by k
  * 2018/11/23 13:52
  **/
-public class 数组中有多少不同的平方值 {
+public class 有序数组中有多少不同的平方值 {
 
 	public static void main(String[] args) {
 		System.out.println(handle(new int[]{-1,0,3,6,8,11,11}));
