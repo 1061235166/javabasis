@@ -1,4 +1,4 @@
-package com.k.算法.leetcode;
+package com.k.算法.leetcode.easy;
 
 /**
  * To Lower Case

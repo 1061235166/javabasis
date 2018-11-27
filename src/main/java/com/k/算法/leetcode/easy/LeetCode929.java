@@ -1,4 +1,4 @@
-package com.k.算法.leetcode;
+package com.k.算法.leetcode.easy;
 
 import java.util.HashSet;
 import java.util.Set;
