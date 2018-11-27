@@ -18,17 +18,23 @@ public class LeetCode709 {
 		for(int i=0;i<b.length();i++){
 			System.out.print((int)b.charAt(i)+"_");
 		}
-		System.out.println("");
-		System.out.println(toLowerCase("WhaAJISJIO"));
+		int r = 77;
+		String s = String.valueOf((char) r);
+		System.out.println(s);
+
+		System.out.println(toLowerCase("AYhaisdhuAYyudashYUDYSTD"));
 	}
 
 	public static String toLowerCase(String str){
 		StringBuilder sb = new StringBuilder();
 		for(int i=0;i<str.length();i++){
 			if(str.charAt(i)>= 65 && str.charAt(i)<=90){
-				sb.append();
+				char c = str.charAt(i);
+				int r = c + 32;
+				String s = String.valueOf((char)r);
+				sb.append(s);
 			}else {
-				sb.append(str.charAt(i));
+				sb.append(String.valueOf(str.charAt(i)));
 			}
 		}
 		return sb.toString();
