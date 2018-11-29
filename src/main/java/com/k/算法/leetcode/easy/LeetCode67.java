@@ -1,5 +1,7 @@
 package com.k.算法.leetcode.easy;
 
+import java.math.BigInteger;
+
 /**
  *
  * 两个二进制数字相加
@@ -23,6 +25,12 @@ public class LeetCode67 {
 		//    10101
 	}
 
+	/**
+	 * 自己的解法，错误的
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	public static String add(String a,String b){
 
 		Integer integera = Integer.valueOf(a, 2);
@@ -31,4 +39,19 @@ public class LeetCode67 {
 		return Integer.toBinaryString(integera+integerb);
 
 	}
+
+	/**
+	 * 网上的做法，正确的
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static String add2(String a,String b){
+
+		BigInteger a1 = new BigInteger(a,2);
+		BigInteger b1 = new BigInteger(b,2);
+		return a1.add(b1).toString(2);
+	}
+
+
 }
