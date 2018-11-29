@@ -37,7 +37,7 @@ public class LeetCode125 {
 	}
 
 	/**
-	 * 自己的解法
+	 * 自己的解法，还是有问题的
 	 * @param string
 	 * @return
 	 */
@@ -85,7 +85,7 @@ public class LeetCode125 {
 	public static boolean isPalindrome2(String string){
 		//把所有不是大小写字母和数字的字符都转换为空格
 		String r = string.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
-//		System.out.println(r.toLowerCase());
+		System.out.println(r);
 		//然后对比
 		int s = 0;
 		int e = r.length()-1;
