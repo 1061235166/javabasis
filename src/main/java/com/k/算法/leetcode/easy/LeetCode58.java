@@ -20,9 +20,11 @@ public class LeetCode58 {
 		int a_b = lengthOfLastWord("a b");
 
 		System.out.println(a_b);
+
+		System.out.println(lengthOfLastWord2("a b1  11231231"));
 	}
 
-
+	//自己的解法
 	public static int lengthOfLastWord(String s){
 		String trim = s.trim();
 		if(trim.length()==0){
@@ -34,5 +36,24 @@ public class LeetCode58 {
 			return s1.length();
 		}
 		return s1.length()-1-index;
+	}
+
+	/**
+	 * 自己参考网友的写法
+	 * @param s
+	 * @return
+	 */
+	public static int lengthOfLastWord2(String s){
+		int index = s.trim().length()-1;
+		int len=0;
+		boolean isStart = true;
+		while (index>=0) {
+			if (s.charAt(index)!=' ') {
+				index--;
+				len++;
+			}else
+				return len;
+		}
+		return len;
 	}
 }
