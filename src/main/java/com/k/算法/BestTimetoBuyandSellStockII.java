@@ -11,6 +11,30 @@ public class BestTimetoBuyandSellStockII {
 
     public static void main(String[] args) {
         System.out.println(maxProfit(new int[]{7,1,5,3,6,4}));
+        System.out.println(maxProfit2(new int[]{7,1,5,3,6,4}));
+        System.out.println(maxProfit(new int[]{1,2,3,4,5}));
+        System.out.println(maxProfit2(new int[]{1,2,3,4,5}));
+    }
+
+    /**
+     * 自己的解法
+     * @param prices
+     * @return
+     */
+    public static int maxProfit2(int[] prices){
+        int r=0;
+        for(int i=0;i<prices.length-1;i++){
+          if(i > prices.length-1){
+              break;
+          }
+          int v = prices[i];
+          int a= prices[i+1];
+          if(a>v){
+              int b = a-v;
+              r+=b;
+          }
+       }
+       return r;
     }
 
     /**
@@ -24,7 +48,6 @@ public class BestTimetoBuyandSellStockII {
             if (prices[i+1]>prices[i])
                 total += prices[i+1]-prices[i];
         }
-
         return total;
     }
 }
