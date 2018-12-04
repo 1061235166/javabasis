@@ -25,7 +25,7 @@ public class 字符串中的第一个唯一字符 {
 	}
 
 	/**
-	 * 自己的解法
+	 * 自己的解法，效率不高
 	 * @param s
 	 * @return
 	 */
@@ -73,4 +73,43 @@ public class 字符串中的第一个唯一字符 {
 		return list.size()==0?-1:list.get(0);
 	}
 
+
+	/**
+	 * 网上的解法
+	 * @param s
+	 * @return
+	 */
+	public static int firstUniqChar2(String s) {
+		Map<Character, Integer> map = new LinkedHashMap<>();
+		Set<Character> set = new HashSet<>();
+		for (int i = 0; i < s.length(); i++) {
+			if (set.contains(s.charAt(i))) {
+				if (map.get(s.charAt(i)) != null) {
+					map.remove(s.charAt(i));
+				}
+			} else {
+				map.put(s.charAt(i), i);
+				set.add(s.charAt(i));
+			}
+		}
+		return map.size() == 0 ? -1 : map.entrySet().iterator().next().getValue();
+	}
+
+
+	/**
+	 * 网上的解法，效率高，用字符串的indexOf,非常易于理解
+	 * @param s
+	 * @return
+	 */
+	public static int firstUniqChar3(String s) {
+
+		char[] a = s.toCharArray();
+
+		for(int i=0; i<a.length;i++){
+			if(s.indexOf(a[i])==s.lastIndexOf(a[i])){
+				return i;
+			}
+		}
+		return -1;
+	}
 }
