@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 对dummy node的理解
  * created by wyk
  * 2018/12/5 15:02
  **/
