@@ -20,6 +20,12 @@ public class 反转链表 {
 		l2.next=l3;
 		l3.next=l4;
 
+		ListNode tail = reverseList3(head);
+		while (tail!=null){
+			int val = tail.val;
+			System.out.println(val);
+			tail = tail.next;
+		}
 	}
 
 	/**
@@ -67,6 +73,22 @@ public class 反转链表 {
 		ListNode newHead=reverseList(nextNode);
 		nextNode.next=head;
 		head.next=null;
+		return newHead;
+	}
+
+	/**
+	 * 非递归，网上的解法
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseList3(ListNode head) {
+		ListNode newHead = null;
+		while(head!=null){
+			ListNode next = head.next;
+			head.next = newHead;
+			newHead = head;
+			head = next;
+		}
 		return newHead;
 	}
 }
