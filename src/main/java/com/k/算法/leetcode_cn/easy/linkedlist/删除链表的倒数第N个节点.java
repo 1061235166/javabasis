@@ -23,14 +23,13 @@ import java.util.List;
  **/
 public class 删除链表的倒数第N个节点 {
 
-	static class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) {
-      	val = x;
-      }
-	}
 
+	/**
+	 * 可以通过但是好像不符合要求
+	 * @param head
+	 * @param n
+	 * @return
+	 */
 	public static ListNode removeNthFromEnd(ListNode head, int n) {
 		ListNode node = head;
 		List<ListNode>list = new ArrayList<>();
