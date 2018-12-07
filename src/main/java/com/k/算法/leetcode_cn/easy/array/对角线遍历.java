@@ -16,12 +16,12 @@ package com.k.算法.leetcode_cn.easy.array;
  * created by k
  * 2018/12/6 10:45
  *
- * 00,01,10,20,11,02,12,21,22
- * 00->01->
+ *https://leetcode.com/problems/diagonal-traverse/
+ * 属于中等难度的题目
  **/
 public class 对角线遍历 {
 
-
+	//todo 需要增加自己的解法
 	public static int[] findDiagonalOrder(int[][] matrix) {
 		return null;
 	}

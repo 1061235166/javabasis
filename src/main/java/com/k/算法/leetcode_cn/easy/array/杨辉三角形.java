@@ -21,7 +21,7 @@ import java.util.LongSummaryStatistics;
 public class 杨辉三角形 {
 
 	public static void main(String[] args) {
-		List<List<Integer>> generate = generate(16);
+		List<List<Integer>> generate = generate(100);
 		generate.forEach((list)->{
 			System.out.print("[");
 			list.forEach((i)->{

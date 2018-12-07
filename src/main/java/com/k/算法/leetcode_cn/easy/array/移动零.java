@@ -19,6 +19,7 @@ public class 移动零 {
 
 	/**
 	 * 网上的解法
+	 * 前移所有的非0项，最后在结尾填充所有的0
 	 * @param nums
 	 */
 	public static void moveZeroes(int[] nums) {
@@ -29,6 +30,13 @@ public class 移动零 {
 				nums[p++] = i;
 		while (p < nums.length)
 			nums[p++] = 0;
+	}
+
+	//todo 自己解法未完成
+	public static void move(int[]nums){
+		for(int i : nums){
+
+		}
 	}
 
 	public static void main(String[] args) {
