@@ -32,16 +32,24 @@ public class 移动零 {
 			nums[p++] = 0;
 	}
 
-	//todo 自己解法未完成
+	/**
+	 * 自己的做法，不符合不创建额外数组
+	 * @param nums
+	 */
 	public static void move(int[]nums){
-		for(int i : nums){
-
+		int [] ints = new int[nums.length];
+		int s = 0;
+		for(int i=0;i<nums.length;i++){
+			if(nums[i]!=0){
+				ints[s++]=nums[i];
+			}
 		}
+		System.out.println(Arrays.toString(ints));
 	}
 
 	public static void main(String[] args) {
 		int []ints =new int[]{0,1,0,3,12};
-		moveZeroes(ints);
+		move(ints);
 		System.out.println(Arrays.toString(ints));
 		int[]ints1={0,0,1};
 		moveZeroes(ints1);
