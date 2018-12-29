@@ -1,19 +1,27 @@
 package com.k.binary;
 
+import java.math.BigInteger;
+
 /**
+ * 总结:
+ * 二进制左移一位，其实就是将数字翻倍
+ * 二进制右移一位，就是将数字除以 2 并求整数商的操作
+ *
+ *
  * Created by k on 2018/6/4.
  */
 public class BinaryOperation {
 
 	public static void main(String[] args) {
-		rightMove();
+//		rightMove();
 //		operationAND();
 //		System.out.println("====");
 //		operationOR();
-		leftMove();
-		rightMove();
-		stringToBinary();
-		unsignedrightMove();
+//		leftMove();
+//		rightMove();
+//		stringToBinary();
+//		unsignedrightMove();
+		binaryForBiginteger();
 	}
 
 	public static void stringToBinary(){
@@ -139,4 +147,18 @@ public class BinaryOperation {
 		System.out.println("unsignedrightMove end");
 	}
 
+	/**
+	 * 用bigint转换
+	 */
+	public static void binaryForBiginteger(){
+		BigInteger bigInteger = new BigInteger("32");
+		String s = bigInteger.toString(2);
+		System.out.println(s);
+
+		int a = 32 <<1;
+		System.out.println(a);
+		BigInteger b = new BigInteger(a+"");
+		System.out.println(b.toString(2));
+		System.out.println(Integer.parseInt(b.toString(2),10));
+	}
 }
