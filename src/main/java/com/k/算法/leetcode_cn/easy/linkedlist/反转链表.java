@@ -98,6 +98,7 @@ public class 反转链表 {
 	 * https://mp.weixin.qq.com/s?__biz=MzI0MzQyMTYzOQ==&mid=2247484880&idx=1&sn=e394ade80079b0195668e106d6a97765&chksm=e96c1d78de1b946e51cafd61e86725bb8ac0b04db536ff883d66921b627d4da61e7177adb519&scene=0&xtrack=1#rd
 	 * 来自老钱的讲解，但是讲的有点复杂
 	 * 后来在网上找到了3个解法，比较简单
+	 * 主要思路是记录当前节点和上一个节点，用作下一次循环
 	 * @param head
 	 * @return
 	 */
