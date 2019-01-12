@@ -21,7 +21,7 @@ public class 反转链表 {
 		l2.next=l3;
 		l3.next=l4;
 
-		ListNode tail = reverseList3(head);
+		ListNode tail = reverseList4(head);
 		while (tail!=null){
 			int val = tail.val;
 			System.out.println(val);
@@ -91,5 +91,46 @@ public class 反转链表 {
 			head = next;
 		}
 		return newHead;
+	}
+
+
+	/**
+	 * https://mp.weixin.qq.com/s?__biz=MzI0MzQyMTYzOQ==&mid=2247484880&idx=1&sn=e394ade80079b0195668e106d6a97765&chksm=e96c1d78de1b946e51cafd61e86725bb8ac0b04db536ff883d66921b627d4da61e7177adb519&scene=0&xtrack=1#rd
+	 * 来自老钱的讲解，但是讲的有点复杂
+	 * 后来在网上找到了3个解法，比较简单
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseList4(ListNode head) {
+		ListNode pre = null;
+		ListNode now = head;
+		while (now!=null){
+			//获取当前节点下一个节点
+			ListNode next = now.next;
+			//设置当前节点的下一个节点为上一个节点，用于反转
+			now.next = pre;
+			//下次循环的上一个节点为当前节点
+			pre = now;
+			//设置下次循环的当前节点的下一个节点
+			now = next;
+		}
+		return pre;
+	}
+
+	/**
+	 * 使用递归反转链表
+	 * https://www.cnblogs.com/zhengcj/p/7494089.html
+	 * 递归方法1。先找到最后一个节点，然后从最后一个开始反转,然后当前节点反转时其后面的节点已经进行反转了，不需要管。最后返回原来的最后一个节点
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseList5ByRecursive(ListNode head){
+		if(head.next==null){
+			return reverseList5ByRecursive(head);
+		}
+		//todo 待完成
+		ListNode next = head.next;
+		next.next = reverseList5ByRecursive(head);
+		return next;
 	}
 }
