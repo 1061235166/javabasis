@@ -5,7 +5,8 @@ import java.util.List;
 
 /**
  * 对dummy node的理解
- * created by wyk
+ * https://leetcode.com/problems/reverse-linked-list/
+ * created by k
  * 2018/12/5 15:02
  **/
 public class 反转链表 {
@@ -21,7 +22,8 @@ public class 反转链表 {
 		l2.next=l3;
 		l3.next=l4;
 
-		ListNode tail = reverseList3(head);
+		ListNode tail = reverseList4(head);
+		System.out.println("反转后");
 		while (tail!=null){
 			int val = tail.val;
 			System.out.println(val);
@@ -91,5 +93,23 @@ public class 反转链表 {
 			head = next;
 		}
 		return newHead;
+	}
+
+	/**
+	 * 网上的解法，比较直观的解法
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseList4(ListNode head) {
+		ListNode curr = null;
+		ListNode temp = head;
+		ListNode prev = null;
+		while(temp != null){
+			prev = curr;
+			curr = temp;
+			temp = curr.next;
+			curr.next = prev;
+		}
+		return curr;
 	}
 }
