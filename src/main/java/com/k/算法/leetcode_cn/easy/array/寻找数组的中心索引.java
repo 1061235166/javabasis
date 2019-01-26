@@ -36,6 +36,7 @@ public class 寻找数组的中心索引 {
 		System.out.println(pivotIndex(new int[]{1, 7, 3, 6, 5, 6}));
 		System.out.println(pivotIndex(new int[]{1,2,3}));
 		System.out.println(pivotIndex(new int[]{-1,-1,-1,0,1,1}));
+		System.out.println(pivotIndex3(new int[]{1,7,3,6,5,6}));
 	}
 
 	/**
@@ -84,6 +85,31 @@ public class 寻找数组的中心索引 {
 			if (leftSum == rightSum)
 				return i;
 			leftSum += nums[i];
+		}
+		return -1;
+	}
+
+	/**
+	 * 自己的解法，通过了
+	 * 思路是先把数组所有项的综合求出来，然后遍历数组，算出左边的总数和右边的总数，分别减去当前下标的数值，如果相等，返回，
+	 * 否则继续向右迭代
+	 * @param nums
+	 * @return
+	 */
+	public static int pivotIndex3(int[] nums){
+		int sum = 0;
+		for(int i : nums){
+			sum+=i;
+		}
+		int leftSum= 0;
+		for(int i=0;i<nums.length;i++){
+			int n = nums[i];
+//			leftSum+=n;
+			int rightSum = sum - leftSum - n;
+			if(leftSum ==rightSum){
+				return i;
+			}
+			leftSum+=n;
 		}
 		return -1;
 	}

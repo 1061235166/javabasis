@@ -40,7 +40,7 @@ public class FibonacciSequence {
 
 
 	public static void main(String[] args) {
-		System.out.println(fibonacci(10));
-		System.out.println(finbonacciLoop(10));
+		System.out.println(fibonacci(32));
+		System.out.println(finbonacciLoop(32));
 	}
 }
