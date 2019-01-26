@@ -7,7 +7,9 @@ import java.math.BigInteger;
  * 二进制左移一位，其实就是将数字翻倍
  * 二进制右移一位，就是将数字除以 2 并求整数商的操作
  *
- *
+ * 左移:去除最高位n位,右边用0补
+ * 右移:去除最低位n为,左边用0补,是正数最高位用0补,负数最高位用1补
+ * 无符号右移:去除最低位n位,左边用0补
  * Created by k on 2018/6/4.
  */
 public class BinaryOperation {
@@ -90,6 +92,7 @@ public class BinaryOperation {
 	/**
 	 * 左移，将数字的二进制格式往左位移n为并舍弃高位的n位，低位用0补上
 	 * 其实可以左移的结果： a<<b 等价于 a*(2的b次方)
+	 *
 	 */
 	public static void leftMove(){
 		System.out.println("========leftMove start========");
