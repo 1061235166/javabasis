@@ -22,6 +22,7 @@ public class 反转链表 {
 		l3.next=l4;
 
 		ListNode tail = reverseList4(head);
+		System.out.println("反转后");
 		while (tail!=null){
 			int val = tail.val;
 			System.out.println(val);
@@ -133,5 +134,23 @@ public class 反转链表 {
 		ListNode next = head.next;
 		next.next = reverseList5ByRecursive(head);
 		return next;
+	}
+
+	/**
+	 * 网上的解法，比较直观的解法
+	 * @param head
+	 * @return
+	 */
+	public static ListNode reverseList6(ListNode head) {
+		ListNode curr = null;
+		ListNode temp = head;
+		ListNode prev = null;
+		while(temp != null){
+			prev = curr;
+			curr = temp;
+			temp = curr.next;
+			curr.next = prev;
+		}
+		return curr;
 	}
 }

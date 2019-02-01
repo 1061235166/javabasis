@@ -7,11 +7,41 @@ import java.math.BigInteger;
  * 二进制左移一位，其实就是将数字翻倍
  * 二进制右移一位，就是将数字除以 2 并求整数商的操作
  *
- *
+ * 左移:去除最高位n位,右边用0补
+ * 右移:去除最低位n为,左边用0补,是正数最高位用0补,负数最高位用1补
+ * 无符号右移:去除最低位n位,左边用0补
+ * 进制表示规范
+ 这个小节是插曲，部分同学可能注意到上面写的进制定义是：0b01011000，部分同学 可能疑惑为什么不是 0x 之类的。
+ 前缀
+ 十进制：直接写数字即可
+ 二进制：0b或0B开头；如：0b01011000 代表十进制 88
+ 八进制：0 开头；如：0130 代表十进制 88 （1x64+3x8）
+ 十六进制：0x或0X开头；如：0x58 代表 88 (5x16+8)
+ 后缀
+ 0x?? 若小于127 则按byte算，大于则按int类型算
+ 0xFF默认为int类型
+ 若声明为long添加后缀：L或l：如：0xFFL 或 0xFFl
+ 带小数的值默认为double类型；如：0.1
+ 若声明为float添加后缀：f 或 F：如：0.1F
+ 若声明为double添加后缀：d或D：如：1D
+ 范围
+ 二进制：1、0
+ 八进制：0～7
+ 十进制：0～9
+ 十六进制：0～9 + A～F
+
  * Created by k on 2018/6/4.
  */
 public class BinaryOperation {
 
+
+	/**
+	 *
+	 * @author k
+	 * @date 2019/1/26
+	 * @param
+	 * @return
+	 */
 	public static void main(String[] args) {
 //		rightMove();
 //		operationAND();
@@ -22,6 +52,7 @@ public class BinaryOperation {
 //		stringToBinary();
 //		unsignedrightMove();
 		binaryForBiginteger();
+
 	}
 
 	public static void stringToBinary(){
@@ -90,6 +121,7 @@ public class BinaryOperation {
 	/**
 	 * 左移，将数字的二进制格式往左位移n为并舍弃高位的n位，低位用0补上
 	 * 其实可以左移的结果： a<<b 等价于 a*(2的b次方)
+	 *
 	 */
 	public static void leftMove(){
 		System.out.println("========leftMove start========");

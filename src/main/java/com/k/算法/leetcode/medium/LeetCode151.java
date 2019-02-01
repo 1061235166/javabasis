@@ -37,8 +37,6 @@ public class LeetCode151 {
         for(Integer i : integers){
             stringBuilder.deleteCharAt(i);
         }
-
-
         return string;
     }
 }

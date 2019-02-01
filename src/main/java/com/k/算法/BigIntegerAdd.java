@@ -1,9 +1,5 @@
 package com.k.算法;
 
-import com.google.common.base.Strings;
-import com.google.common.primitives.Ints;
-
-import java.io.File;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
@@ -169,9 +165,6 @@ public class BigIntegerAdd {
 		for(int i=0;i<newLength-1;i++){
 			int a= newB1[i];
 			int b= newB2[i];
-			if(i!=0){
-				isFirst=false;
-			}
 			//合并
 			int sum = a+b;
 			if(sum>=10){
@@ -179,15 +172,12 @@ public class BigIntegerAdd {
 				sum = sum - 10;
 			}
 			newA[i]=sum;
-			if(isFirst && newA[i]==0){
-				continue;
-			}
 			sb.append(newA[i]);
 		}
 		System.out.println(Arrays.toString(newA));
 		System.out.println(sb.reverse().toString());
 
-		BigInteger add = new BigInteger("73821781728371823").add(new BigInteger("123123123123123"));
+		BigInteger add = new BigInteger("99999").add(new BigInteger("88888888888888888888888"));
 		System.out.println(add);
 	}
 
