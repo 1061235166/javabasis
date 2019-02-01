@@ -12,3 +12,9 @@
 
 - MaxTenuringThreshold
 > 晋升到老年代需要被gc的次数
+
+- Xss
+> 线程大小
+
+- AutoBoxCacheMax
+> integer缓存大小
