@@ -3,65 +3,81 @@ package com.k.datastructure.tree;
 /**
  * Created by k on 2018/11/22.
  */
-public class BST <K extends Comparable<K>,V> implements TreeOperation<K,V> {
+public class BST <K extends Comparable<K>,V>   {
 
     private Node root;
 
-    @Override
-    public V get(K k) {
+    public int size(){
+        return size(root);
+    }
+
+    private int size(Node node){
+        if(node ==null)
+            return 0;
+        return node.n;
+    }
+
+    public V get(K k){
         return get(root,k);
     }
 
     private V get(Node node,K k){
-        if(node ==null){
+        if(node == null){
             return null;
         }
-        int i = k.compareTo(node.k);
-        if(i==0){
+        if(k.compareTo(node.k)==0){
             return node.v;
         }
-        if(i<0){
-            Node left = node.left;
-            return get(left,k);
+        if(k.compareTo(node.k)<0){
+            return get(node.left,k);
         }
-        Node right = node.right;
-        return get(right,k);
+        return get(node.right,k);
     }
 
-    @Override
-    public void put(K k, V v) {
+    public void put(K k,V v){
         put(root,k,v);
     }
 
     private Node put(Node node,K k,V v){
         if(node == null){
-            return new Node(k,v,null,null);
+            return new Node(k,v,1);
         }
-        int i = node.k.compareTo(k);
-        if(i<0){
-            node.left = put(node.left,k,v);
+        if(k.compareTo(node.k)<0){
+            return put(node.left,k,v);
         }
-        if(i>0){
-            node.right = put(node.right,k,v);
-        }
-        if(i==0){
-            node.k=k;
-            node.v=v;
+        else if(k.compareTo(node.k)<0){
+            return put(node.right,k,v);
+        }else {
+            node.v = v;
+            node.n = size(node.left)+size(node.right);
         }
         return node;
     }
 
+
     private class Node{
         private K k;
         private V v;
+        private int n;
         private Node left;
         private Node right;
-
-        public Node(K k, V v, Node left, Node right) {
+        public Node(K k, V v, int n) {
             this.k = k;
             this.v = v;
-            this.left = left;
-            this.right = right;
+            this.n = n;
         }
+    }
+
+    public static void main(String[] args) {
+        BST bst = new BST();
+        bst.put(11,2);
+        bst.put(5,2);
+        bst.put(7,2);
+        bst.put(9,2);
+        bst.put(13,2);
+        bst.put(16,2);
+        Object o = bst.get(5);
+        System.out.println(o);
+        System.out.println(bst.size());
     }
 }

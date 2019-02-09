@@ -1,6 +1,6 @@
-package com.k.sort;
+package com.k.排序;
 
-import com.k.sort.swap.BaseSwap;
+import com.k.排序.swap.BaseSwap;
 
 /**
  * 希尔排序，把一个数组按照固定间隔分开，对每个分开的数组进行插入排序

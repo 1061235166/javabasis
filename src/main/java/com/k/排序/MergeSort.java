@@ -1,6 +1,6 @@
-package com.k.sort;
+package com.k.排序;
 
-import com.k.sort.swap.BaseSwap;
+import com.k.排序.swap.BaseSwap;
 
 /**
  * 归并排序
