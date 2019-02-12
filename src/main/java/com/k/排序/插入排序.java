@@ -14,7 +14,7 @@ public class 插入排序 extends BaseSwap {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random2));
-        sort3(random2);
+        sort5(random2);
         System.out.println(Arrays.toString(random2));
     }
 
@@ -76,6 +76,22 @@ public class 插入排序 extends BaseSwap {
                     a[k + 1] = a[k];
                 //将a[i]放到正确位置上
                 a[k + 1] = temp;
+            }
+        }
+    }
+
+    /**
+     * 根据注释自己得出的解法，但是不正确
+     * @param ints
+     */
+    public static void sort5(int [] ints){
+        for(int i=0;i<ints.length;i++){
+            for(int j=i;j<i;j--){
+                int a = ints[i];
+                int b = ints[j];
+                if(a>b){
+                    swap(ints,i,j);
+                }
             }
         }
     }
