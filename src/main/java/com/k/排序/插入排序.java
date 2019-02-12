@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 所有元素都是有序的了
  * Created by k on 2018/5/27.
  */
-public class InsertSort extends BaseSwap {
+public class 插入排序 extends BaseSwap {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random2));
@@ -50,6 +50,32 @@ public class InsertSort extends BaseSwap {
         for(int i=1;i<inputs.length;i++){
             for(int j=i;j>0 && inputs[j]<inputs[j-1];j--){
                 swap(inputs,j,j-1);
+            }
+        }
+    }
+
+    /**
+     * 来自于网上，感觉不好理解
+     * @param a
+     */
+    public static void sort4(int [] a){
+        int i, j, k;
+        int n = a.length;
+        for (i = 1; i < n; i++) {
+
+            //为a[i]在前面的a[0...i-1]有序区间中找一个合适的位置
+            for (j = i - 1; j >= 0; j--)
+                if (a[j] < a[i])
+                    break;
+
+            //如找到了一个合适的位置
+            if (j != i - 1) {
+                //将比a[i]大的数据向后移
+                int temp = a[i];
+                for (k = i - 1; k > j; k--)
+                    a[k + 1] = a[k];
+                //将a[i]放到正确位置上
+                a[k + 1] = temp;
             }
         }
     }

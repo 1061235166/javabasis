@@ -10,10 +10,10 @@ import java.util.Arrays;
  * 依次执行，每轮过后剩余的最大元素都会靠右边
  * Created by k on 2018/5/25.
  */
-public class BubbleSort extends BaseSwap {
+public class 冒泡排序 extends BaseSwap {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random));
-        sort2(random);
+        sort3(random);
         System.out.println(Arrays.toString(random));
 
     }
@@ -35,6 +35,25 @@ public class BubbleSort extends BaseSwap {
 			}
 		}
 	}
+
+    /**
+     * 冒泡排序3，优化版，判断如果在一轮排序后，发现没有元素被交换，说明数组已经是有序的，退出循环
+     *
+     * @param ints
+     */
+	public static void sort3(int [] ints){
+	    for(int i=ints.length-1;i>=0;i--){
+	        boolean swap = false;
+	        for(int j=0;j<i;j++){//必须是j<i，而不能是j<i-1，因为i是大循环的最后一个元素下标，j是i之前的最后一个元素
+	            int a = ints[i];
+	            int b = ints[j];
+	            if(a<b)
+	                swap(ints,i,j);
+            }
+            if(!swap)
+                break;
+        }
+    }
 
     public static void sort(int [] ints){
         boolean swap;
