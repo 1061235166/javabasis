@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class 冒泡排序 extends BaseSwap {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(random));
-        sort3(random);
+        sort4(random);
         System.out.println(Arrays.toString(random));
 
     }
@@ -71,4 +71,33 @@ public class 冒泡排序 extends BaseSwap {
             lastSortdIndex--;
         }while (swap);
     }
+
+	/**
+	 *来自js-sorting-algo的解法
+	 * @param sourceArray
+	 */
+	public static void sort4(int []sourceArray){
+		// 对 arr 进行拷贝，不改变参数内容
+//		int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
+
+		for (int i = 1; i < sourceArray.length; i++) {
+			// 设定一个标记，若为true，则表示此次循环没有进行交换，也就是待排序列已经有序，排序已经完成。
+			boolean flag = true;
+
+			for (int j = 0; j < sourceArray.length - i; j++) {
+				if (sourceArray[j] > sourceArray[j + 1]) {
+					int tmp = sourceArray[j];
+					sourceArray[j] = sourceArray[j + 1];
+					sourceArray[j + 1] = tmp;
+
+					flag = false;
+				}
+			}
+
+			if (flag) {
+				break;
+			}
+		}
+
+	}
 }

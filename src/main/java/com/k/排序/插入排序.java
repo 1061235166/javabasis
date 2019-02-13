@@ -81,18 +81,24 @@ public class 插入排序 extends BaseSwap {
     }
 
     /**
-     * 根据注释自己得出的解法，但是不正确
+     * 使用小循环每次拿相邻两个元素作对比,如果左边比右边大,就swap操作
+	 * 这种做法最直观
      * @param ints
      */
     public static void sort5(int [] ints){
-        for(int i=0;i<ints.length;i++){
-            for(int j=i;j<i;j--){
-                int a = ints[i];
-                int b = ints[j];
-                if(a>b){
-                    swap(ints,i,j);
-                }
-            }
-        }
+    	//大循环从第一个元素开始往右走
+		for(int i=0;i<ints.length;i++){
+			//小循环从i开始往左走,如果发现相邻的两个元素左边比右边大,就交换位置,每次小循环走完,i左边的都为有序
+			for(int j=i;j>0;j--){
+				int a = ints[j];
+				int b = ints[j-1];
+				if(a<b){
+					swap(ints,j,j-1);
+				}else {
+					//左边已经有序,所以不需要继续循环
+					break;
+				}
+			}
+		}
     }
 }

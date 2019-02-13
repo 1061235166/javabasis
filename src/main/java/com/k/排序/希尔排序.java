@@ -7,7 +7,7 @@ import com.k.排序.swap.BaseSwap;
  * 应该算是一种特殊的插入排序
  * Created by k on 2018/5/27.
  */
-public class ShellSort extends BaseSwap {
+public class 希尔排序 extends BaseSwap {
 
     public static void main(String[] args) {
         int[] ints = randomArray();
