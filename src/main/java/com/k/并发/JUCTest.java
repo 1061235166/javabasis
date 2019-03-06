@@ -10,7 +10,7 @@ public class JUCTest {
 
 
 	public static void main(String[] args) {
-		countdownlatch();
+		SemaphoreTest();
 	}
 
 	static void countdownlatch(){
@@ -41,6 +41,13 @@ public class JUCTest {
 		System.out.println("countdown");
 
 		service.shutdown();
+	}
+
+
+	static void SemaphoreTest(){
+		Semaphore semaphore = new Semaphore(10);
+		int i = semaphore.availablePermits();
+		System.out.println(i);
 	}
 
 }
