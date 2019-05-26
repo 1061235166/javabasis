@@ -29,38 +29,34 @@ public class ThreadInterview {
 
         AtomicInteger integer = new AtomicInteger(0);
 
+
         Thread a = new Thread(()->{
+            boolean s=false;
             lock.lock();
             try {
-                int andAdd = integer.getAndAdd(1);
                 for(int i=0;i<str.length;i++){
-                    if(i%2==0){
-                        condition.signal();
+                    if(!s && integer.getAndAdd(1)%2==0){
                         System.out.println(str[i]);
                     }else {
-                        condition.await();
+                        s=true;
                     }
+
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             } finally {
                 lock.unlock();
             }
         });
         Thread b = new Thread(()->{
+            boolean s=false;
             lock.lock();
             try {
-                int andAdd = integer.getAndAdd(1);
                 for(int i=0;i<str.length;i++){
-                    if(i%2!=0){
-                        condition.signal();
+                    if(s && integer.getAndAdd(1)%2!=0){
                         System.out.println(str[i]);
                     }else {
-                        condition.await();
+                        s=false;
                     }
                 }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             } finally {
                 lock.unlock();
             }
