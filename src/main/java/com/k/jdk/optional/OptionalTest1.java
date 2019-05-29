@@ -42,6 +42,54 @@ public class OptionalTest1 {
 
 		System.out.println(equals);
 
+		Address address = new Address();
+		Building building = new Building();
+		Room room = new Room();
+		room.setName("room name");
+		building.setRoom(room);
+		address.setBuilding(building);
 
+		String defaultRoomName = Optional.ofNullable(address)
+				//map操作不会引发NPE!
+				.map((ad) -> ad.getBuilding())
+				.map((bu) -> bu.getRoom())
+				.map((rom) -> rom.getName()).orElse("default room name");
+    	System.out.println(defaultRoomName);
+	}
+
+	static class Building{
+		private Room room;
+
+		public Room getRoom() {
+			return room;
+		}
+
+		public void setRoom(Room room) {
+			this.room = room;
+		}
+	}
+
+	static class Room{
+		private String name;
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+	}
+
+	static class Address{
+		private Building building;
+
+		public Building getBuilding() {
+			return building;
+		}
+
+		public void setBuilding(Building building) {
+			this.building = building;
+		}
 	}
 }
