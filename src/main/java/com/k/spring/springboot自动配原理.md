@@ -1,0 +1,5 @@
+@EnableAutoConfiuration 自动配置注解
+1.新增一个注解，注解上加上EnableAutoConfiuration
+2.在该注解上增加@Import注解，引入一个类并且实例化
+3.在该注解上增加@Configuration注解，并保持spring组件扫描能包含他们
+4.此时只要使用该注解，就间接实例化了Import进来的类，并注入spring
