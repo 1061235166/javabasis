@@ -1,7 +1,5 @@
 package com.k.jdk.thread;
 
-import sun.nio.cs.ext.MacThai;
-
 import java.util.concurrent.*;
 
 /**
