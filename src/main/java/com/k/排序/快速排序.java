@@ -14,4 +14,10 @@ public class 快速排序 extends BaseSwap {
     public static void sort(int[]ints){
 
     }
+
+    private static void sort(int [] input,int s,int e){
+        if(s<e){
+
+        }
+    }
 }
