@@ -51,9 +51,12 @@ public class BinaryOperation {
 //		rightMove();
 //		stringToBinary();
 //		unsignedrightMove();
-		binaryForBiginteger();
-
+//		binaryForBiginteger();
+//		isOdd();
+		test();
 	}
+
+
 
 	public static void stringToBinary(){
 		String key = "king";
@@ -192,5 +195,58 @@ public class BinaryOperation {
 		BigInteger b = new BigInteger(a+"");
 		System.out.println(b.toString(2));
 		System.out.println(Integer.parseInt(b.toString(2),10));
+	}
+
+	/**
+	 * 使用按位与判断数字是否是奇数(偶数)
+	 * 0的二进制表示为00....0,1为0...1,同一个位置上的数字都是1才是1,否则为0
+	 * 0的所有位数上都是0,所以
+	 */
+	public static void isOdd(){
+
+    	System.out.println(11 & 1);
+    	System.out.println(11 & 0);
+    	System.out.println(2^4);
+    	System.out.println(11^4);
+    	System.out.println(13^5);
+    	System.out.println();
+
+
+    	//交换两个数字
+		int x=1;
+		int y=3;
+		x = x ^ y;   // （1）
+		System.out.println(x);
+		y = x ^ y;  // （2）
+		System.out.println(y);
+		x = x ^ y ; // （3）
+		System.out.println(x);
+		System.out.println(y);
+    System.out.println(System.currentTimeMillis());
+    System.out.println(System.nanoTime());
+	}
+
+	/**
+	 * 判断奇数或者偶数
+	 * @author k
+	 * @date 2019/8/1
+	 * @param
+	 * @return
+	 */
+	public static void test(){
+    	System.out.println(Integer.toBinaryString(1));//1
+    	System.out.println(Integer.toBinaryString(2));//10
+    	System.out.println(Integer.toBinaryString(3));//11
+    	System.out.println(Integer.toBinaryString(4));//100
+    	System.out.println(Integer.toBinaryString(5));//101
+    	System.out.println(Integer.toBinaryString(6));//110
+    	// 可以看出偶数和奇数的区别是最后一位是0还是1
+		int n = 1111;
+		//& 都是1才是1,否则是0
+		//奇数和1&最后一位总是1
+    	System.out.println(n&1);
+		int m = 0;
+		//偶数和1&最后一位总是0
+		System.out.println(m&1);
 	}
 }
