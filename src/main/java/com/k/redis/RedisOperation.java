@@ -20,7 +20,7 @@ public class RedisOperation {
 	}
 
 	private static Jedis getJedis(){
-		return new Jedis("192.168.2.136");
+		return new Jedis("localhost");
 	}
 
 	/**
@@ -29,11 +29,18 @@ public class RedisOperation {
 	public static void scan(){
 		Jedis jedis = getJedis();
 		ScanParams scanParams = new ScanParams();
-		scanParams.match("userprod*");
-		scanParams.count(100);
-		ScanResult<String> scan = jedis.scan("0", scanParams);
-		List<String> result = scan.getResult();
-		System.out.println(result);
+		scanParams.match("usersession*");
+		scanParams.count(1);//每次查询1个
+		String cursor = ScanParams.SCAN_POINTER_START;
+		while (true){
+			ScanResult<String> scan = jedis.scan(cursor ,scanParams);
+			cursor = scan.getStringCursor();
+			//当指针为0的时候说明查询不到其他数据了
+			if(cursor.equals("0")){
+				return;
+			}
+      		System.out.println(scan.getResult());
+		}
 	}
 
 	public static void keys() {
