@@ -1,5 +1,6 @@
 package com.k.jdk;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -30,5 +31,11 @@ public class NewDateTime {
 		System.out.println(format);
 		System.out.println(format1);
 		System.out.println(format2);
+
+		Instant instant = Instant.now();
+    	System.out.println(instant.toString());
+
+		String s = instant.toString();
+    	System.out.println(s);
 	}
 }

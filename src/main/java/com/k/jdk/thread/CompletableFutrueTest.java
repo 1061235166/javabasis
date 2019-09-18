@@ -1,6 +1,8 @@
 package com.k.jdk.thread;
 
 
+import com.google.common.collect.Maps;
+
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,7 +16,8 @@ public class CompletableFutrueTest {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
 //        test1();
-        test2();
+//        test2();
+		test4();
     }
 
     public static void test1() throws InterruptedException, ExecutionException, TimeoutException {
@@ -53,6 +56,66 @@ public class CompletableFutrueTest {
         }).start();
         String s = completableFuture.get();
         System.out.println(s);
-
     }
+
+    public static void test3(){
+//    System.out.println(1);
+		CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
+			try {
+				Thread.sleep(3000l);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			return 1;
+		});
+		CompletableFuture<Integer> future2 = CompletableFuture.supplyAsync(() -> {
+			return 2;
+		});
+
+		CompletableFuture.allOf(future, future2);
+		//join,当任务完成后获取结果,不会抛出检查性异常
+    	System.out.println(future.join());
+    	System.out.println(future2.join());
+	}
+
+	public static void test4(){
+		CompletableFuture<String> stringCompletableFuture = CompletableFuture.completedFuture("1111");
+    	System.out.println(stringCompletableFuture.join());
+		//每个人物按照步骤进行,上一个完了才进行下一个
+		CompletableFuture.runAsync(
+				() -> {
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println(1);
+				})
+				.thenRun(() -> {
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println(2);
+				})
+				.thenRun(() -> {
+					try {
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println(3);
+				}).join();
+
+		//对supplyasync返回值做判断
+		CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
+			throw new RuntimeException();
+		})
+		.exceptionally(ex -> "errorResultA")
+		.thenApply(resultA -> resultA + " resultB")
+		.thenApply(resultB -> resultB + " resultC")
+		.thenApply(resultC -> resultC + " resultD");
+    	System.out.println(future.join());
+	}
 }

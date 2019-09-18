@@ -1,5 +1,7 @@
 package com.k.jdk.optional;
 
+import jodd.format.RomanNumber;
+
 import java.util.Optional;
 
 /**
@@ -55,6 +57,8 @@ public class OptionalTest1 {
 				.map((bu) -> bu.getRoom())
 				.map((rom) -> rom.getName()).orElse("default room name");
     	System.out.println(defaultRoomName);
+
+		test1();
 	}
 
 	static class Building{
@@ -91,5 +95,11 @@ public class OptionalTest1 {
 		public void setBuilding(Building building) {
 			this.building = building;
 		}
+	}
+
+	public static void test1(){
+		Optional<Room> room = Optional.ofNullable(new Room());
+		Optional<String> s = room.flatMap((r) -> Optional.ofNullable(r.getName()));
+    	System.out.println(s);
 	}
 }
