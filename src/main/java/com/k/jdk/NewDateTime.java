@@ -37,5 +37,8 @@ public class NewDateTime {
 
 		String s = instant.toString();
     	System.out.println(s);
+
+		String s2 = now2.format(DateTimeFormatter.ISO_LOCAL_DATE);
+    	System.out.println(s2);
 	}
 }
