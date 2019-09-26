@@ -20,7 +20,7 @@ public class GuavaBloomFilter {
 	 * @return
 	 */
 	public static void main(String[] args) {
-		//创建一个布隆过滤器,预计元素xxx个
+		//创建一个布隆过滤器,预计元素xxx个,里面默认有5个哈希函数
 		BloomFilter<String>filter=BloomFilter.create((from,sink)->{
 			sink.putString(from, Charsets.UTF_8);
 		},99999999);
