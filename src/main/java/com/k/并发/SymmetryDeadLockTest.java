@@ -1,12 +1,12 @@
 package com.k.并发;
 
 /**
- * 死锁
+ * 对称死锁
  * 无限循环,会出现死锁,lock1等待lock2释放同时lock2等待lock1释放
  * @author k
  * @date 2019/10/11 16:39
  **/
-public class DeadLockTest {
+public class SymmetryDeadLockTest {
 
   public static void main(String[] args) {
 	  new Thread(new JUCLock1()).start();

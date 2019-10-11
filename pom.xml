@@ -113,6 +113,13 @@
             <artifactId>rocketmq-client</artifactId>
             <version>4.4.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava-testlib -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-testlib</artifactId>
+            <version>28.1-jre</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
