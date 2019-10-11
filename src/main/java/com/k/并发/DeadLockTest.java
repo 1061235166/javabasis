@@ -2,6 +2,7 @@ package com.k.并发;
 
 /**
  * 死锁
+ * 无限循环,会出现死锁,lock1等待lock2释放同时lock2等待lock1释放
  * @author k
  * @date 2019/10/11 16:39
  **/
@@ -20,6 +21,7 @@ public class DeadLockTest {
 
 		@Override
 		public void run() {
+			System.out.println("启动JUC1");
 			while (true){
 				synchronized (lock1){
 					synchronized (lock2){
@@ -34,6 +36,7 @@ public class DeadLockTest {
 
 		@Override
 		public void run() {
+			System.out.println("启动JUC2");
 			while (true){
 				synchronized (lock2){
 					synchronized (lock1){
