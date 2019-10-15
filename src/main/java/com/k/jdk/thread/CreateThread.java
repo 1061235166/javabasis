@@ -9,6 +9,22 @@ import java.util.concurrent.*;
  **/
 public class CreateThread {
 
+	/**
+	 * 当虚拟机里不存在非守护线程了,守护线程就结束工作
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Thread thread = new Thread(() -> {
+			for(;;){
+			}
+		});
+		thread.setDaemon(true);
+		thread.start();
+    	System.out.println(thread.isDaemon());
+    	System.out.println("main start");
+    	System.out.println(Thread.currentThread().isDaemon());
+	}
+
     /**
      * new一个Thread类
      */
