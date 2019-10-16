@@ -70,6 +70,5 @@ public class StreamTest {
 		Integer reduce = integerStream.reduce(1, Integer::sum);
     	System.out.println(reduce);
 
-
 	}
 }
