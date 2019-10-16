@@ -9,24 +9,30 @@ import java.util.stream.Stream;
 
 
 public class StreamTest {
+
+
 	public static void main(String[] args) {
+		reduce();
+	}
+
+	static void streamMapAndCollect(){
 		//创建stream
 		Stream<String> stream = toStream();
 		//转换成list<Long>类型
 		List<Long> collect = stream.map(Long::parseLong).collect(Collectors.toList());
-    	System.out.println(collect);
+		System.out.println(collect);
 
 		stream = toStream();
 		//转换为set
 		Set<String> set = stream.collect(Collectors.toSet());
-    	System.out.println(set);
+		System.out.println(set);
 
 		//使用tomap转换为map
 		stream = toStream();
 		Map<Long, String> map = stream.collect(Collectors.toMap(Long::parseLong, Function.identity()));
-    	System.out.println(map);
+		System.out.println(map);
 
-    	//单线程循环
+		//单线程循环
 		stream = toStream();
 		stream.forEachOrdered(System.out::println);
 		stream = toStream();
@@ -42,7 +48,28 @@ public class StreamTest {
 	 * 创建一个stream
 	 * @return
 	 */
-	private static Stream<String> toStream(){
+	static Stream<String> toStream(){
 		return Stream.<String>builder().add("1").add("2").add("3").add("4").build();
+	}
+
+	static Stream<Integer> toIntStream(){
+		return Stream.<Integer>builder().add(1).add(2).add(3).add(4).build();
+	}
+
+	static void reduce(){
+		Stream<String> stream = toStream();
+		String s = stream.reduce(String::concat).get();
+    	System.out.println(s);
+
+		stream = toStream();
+		String s1 = stream.reduce((a, b) -> a + b).get();
+    	System.out.println(s1);
+
+		Stream<Integer> integerStream = toIntStream();
+		//起始值为1
+		Integer reduce = integerStream.reduce(1, Integer::sum);
+    	System.out.println(reduce);
+
+
 	}
 }
