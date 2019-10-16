@@ -1,5 +1,7 @@
 package com.k.jdk.stream;
 
+import com.google.common.collect.Lists;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,7 +14,7 @@ public class StreamTest {
 
 
 	public static void main(String[] args) {
-		reduce();
+		flatMap();
 	}
 
 	static void streamMapAndCollect(){
@@ -70,5 +72,26 @@ public class StreamTest {
 		Integer reduce = integerStream.reduce(1, Integer::sum);
     	System.out.println(reduce);
 
+	}
+
+	/**
+	 * 多个流合并成一个流
+	 */
+	static void flatMap(){
+		Stream<String> stringStream = toStream();
+		Stream<Object> stream = stringStream.flatMap(new Function<String, Stream<?>>() {
+			@Override
+			public Stream<Integer> apply(String s) {
+				return Lists.newArrayList(1,2,3,4,5,Integer.parseInt(s)).stream();
+			}
+		});
+		stream.forEach(System.out::println);
+
+		/**
+		 * 换一种写法
+		 */
+		toStream()
+				.flatMap((s)->Lists.newArrayList(3,4,5,6,7,Integer.parseInt(s)).stream())
+				.forEach(System.out::println);
 	}
 }
