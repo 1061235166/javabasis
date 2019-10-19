@@ -2,6 +2,7 @@ package com.k.jdk.stream;
 
 import com.google.common.collect.Lists;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -14,7 +15,7 @@ public class StreamTest {
 
 
 	public static void main(String[] args) {
-		flatMap();
+		listToMapDistinct();
 	}
 
 	static void streamMapAndCollect(){
@@ -93,5 +94,25 @@ public class StreamTest {
 		toStream()
 				.flatMap((s)->Lists.newArrayList(3,4,5,6,7,Integer.parseInt(s)).stream())
 				.forEach(System.out::println);
+	}
+
+	static void listToMapDistinct(){
+		ArrayList<Integer> list = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10);
+		//Exception in thread "main" java.lang.IllegalStateException: Duplicate key 10
+		//直接用toMap会报错
+//		try {
+//			Map<Integer, Integer> collect = list.stream().collect(Collectors.toMap((k) -> k, (v) -> v));
+//			System.out.println(collect);
+//		}catch (Exception e){
+//			e.printStackTrace();
+//		}
+
+		//使用Bifunction处理重复的key
+		Map<Integer, Integer> collect = list.stream().collect(Collectors.toMap((k) -> k, Function.identity(), (a, b) -> {
+			System.out.println(a);
+			System.out.println(b);
+			return a+b;
+		}));
+		System.out.println(collect);
 	}
 }
