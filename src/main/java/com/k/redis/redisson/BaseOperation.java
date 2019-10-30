@@ -4,7 +4,9 @@ import org.redisson.Redisson;
 import org.redisson.api.RHyperLogLog;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
+import org.redisson.client.codec.StringCodec;
 import org.redisson.config.Config;
+import org.redisson.config.SingleServerConfig;
 
 import java.util.Random;
 
@@ -35,8 +37,13 @@ public class BaseOperation {
         System.out.println(redissonClient.isShutdown());
     }
 
-    private static RedissonClient create(){
-        RedissonClient redissonClient = Redisson.create();
+    public static RedissonClient create(){
+		Config config = new Config();
+		//必须设置为字符串编码解码器
+		config.setCodec(StringCodec.INSTANCE);
+		SingleServerConfig singleServerConfig = config.useSingleServer();
+		singleServerConfig.setAddress("redis://localhost:6379");
+		RedissonClient client = Redisson.create(config);
         return redissonClient;
     }
 
