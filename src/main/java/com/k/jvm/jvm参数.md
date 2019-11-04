@@ -18,3 +18,14 @@
 
 - AutoBoxCacheMax
 > integer缓存大小
+
+- 类加载7个步骤
+>加载（Loading）
+ 验证（Verification）
+ 准备（Preparation）
+ 解析（Resolution）
+ 初始化（Initialization）
+ 使用（Using）
+ 卸载（Unloading）
+
+> 具体可看 https://github.com/TangBean/understanding-the-jvm

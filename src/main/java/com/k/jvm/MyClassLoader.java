@@ -2,6 +2,7 @@ package com.k.jvm;
 
 /**
  * 自定义类加载器
+ * 相关知识点:双亲委派模型
  * @author wyk
  * @date 2019/7/8 14:48
  **/
