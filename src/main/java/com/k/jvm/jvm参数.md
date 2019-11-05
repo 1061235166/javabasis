@@ -19,6 +19,9 @@
 - AutoBoxCacheMax
 > integer缓存大小
 
+- -XX:+PrintStringTableStatistics
+> 打印观察字符串常量池
+
 - 类加载7个步骤
 >加载（Loading）
  验证（Verification）
