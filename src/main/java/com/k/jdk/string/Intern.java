@@ -29,5 +29,16 @@ public class Intern {
 
         String s = new StringBuilder("jav").append("a").toString();
         System.out.println(s.intern()==s);
+
+//		如果字符串未在 Pool 中，那么就往 Pool 中增加一条记录，然后返回 Pool 中的引用。
+//		如果已经在 Pool 中，直接返回 Pool 中的引用。
+		//伪代码
+		boolean isStringInPool = false;
+		if(isStringInPool){
+			//addStringToPool();
+			//return stringFromPool;
+		}else {
+			//return stringFromPool;
+		}
     }
 }
