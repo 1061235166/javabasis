@@ -70,3 +70,17 @@
  
     >Java内存模型规定和指引Java程序在不同的内存架构、CPU和操作系统间有确定性地行为。它在多线程的情况下尤其重要。Java内存模型对一个线程所做的变动能被其它线程可见提供了保证，它们之间是先行发生关系。这个关系定义了一些规则让程序员在并发编程时思路更清晰。比如，先行发生关系确保了：
     
+-   一些常见的java命令,一般都存在于%JAVA_HOME%里,linux或windows都可以直接用,这些命令
+    在linux必须要root权限才能正常使用
+    >jps(Java Virtual Machine Process Status Tool)
+    >>java虚拟机进程状态工具
+    
+    >jstack
+    >>Prints Java thread stack traces for a Java process, core file, or remote debug
+    ,打印java进程,核心文件或者远程debug的线程堆栈信息,通常可以追踪到线程信息
+    
+    >jmap (java memory Map)
+    >>java内存映射,一般和jhat使用
+    
+    >jstat（JVM统计监测工具）
+    >>todo
