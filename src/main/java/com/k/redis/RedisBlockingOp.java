@@ -1,8 +1,9 @@
 package com.k.redis;
 
+import com.k.redis.redisson.BaseOperation;
+import org.apache.commons.lang3.Range;
 import org.redisson.Redisson;
-import org.redisson.api.RBlockingQueue;
-import org.redisson.api.RedissonClient;
+import org.redisson.api.*;
 import org.redisson.client.codec.Codec;
 import org.redisson.client.codec.StringCodec;
 import org.redisson.config.Config;
@@ -10,6 +11,8 @@ import org.redisson.config.SingleServerConfig;
 import redis.clients.jedis.Jedis;
 
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,7 +23,12 @@ import java.util.concurrent.TimeUnit;
 public class RedisBlockingOp {
 
 	public static void main(String[] args) throws InterruptedException {
-		redissonblocking();
+//		zsetblocking();
+		BlockingQueue<Integer> blockingQueue = new ArrayBlockingQueue(1);
+		blockingQueue.add(11);
+		boolean offer = blockingQueue.offer(10, 2l, TimeUnit.SECONDS);
+    System.out.println(offer);
+		System.out.println(111);
 	}
 
 	static void jedisblocking(){Jedis jedis = new Jedis();
@@ -66,4 +74,14 @@ public class RedisBlockingOp {
 		client.shutdown();
 	}
 
+	static void zsetblocking(){
+		RedissonClient client = BaseOperation.create();
+		RBitSet bit = client.getBitSet("bit");
+		bit.set(0l,true);
+		bit.set(1l,true);
+		bit.set(2l,false);
+		RHyperLogLog<Object> log = client.getHyperLogLog("hy");
+		Range<Integer> between = Range.<Integer>between(0, 1000);
+
+	}
 }

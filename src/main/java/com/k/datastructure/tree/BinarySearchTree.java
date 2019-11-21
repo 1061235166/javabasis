@@ -45,9 +45,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     }
 
+	@Override
+	public String toString() {
+		return getData(root);
+	}
 
+	private String getData(Node<T>node){
+    	if(node!=null){
+    		return node.getData().toString()+"_"+getData(node.left)+"_"+getData(node.getRight());
+		}
+		return "null";
+	}
 
-    /**
+	/**
      * 获取节点
      * @param data
      * @return
@@ -92,6 +102,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
         System.out.println(integerNode.getRight().getRight());
 
         System.out.println(tree.size);
+
+		System.out.println(tree.toString());
     }
 
     /**

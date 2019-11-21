@@ -43,3 +43,8 @@ pfmerge可以把两个hll数据的结果合并到一起
 
 - 老钱的redis基础数据结构
 >https://juejin.im/post/5b53ee7e5188251aaa2d2e16
+
+- redis为什么那么快
+>1.大多数操作都是在内存里完成,而且redis是一个key-value类似于hashmap的结构,增删改查复杂度都是O(1),
+>2.是单线程,没有加锁解锁,切换上下文的开销
+>3.

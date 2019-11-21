@@ -1,9 +1,6 @@
 package com.k.jdk.concurrent;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.*;
 
 /**
  * 线程池
@@ -13,7 +10,7 @@ import java.util.concurrent.ThreadFactory;
 public class ExecutorsTest {
 
 	public static void main(String[] args) {
-		t1();
+		debug();
 	}
 
 	public static void t1(){
@@ -22,6 +19,19 @@ public class ExecutorsTest {
 		ExecutorService executorService = Executors.newFixedThreadPool(10);
 		//默认是ThreadPoolExecutor.class类型的
 		System.out.println(executorService.getClass());
+
+	}
+
+	static void debug(){
+		//被创建的线程会不断使用while循环从workerQueue里取任务并执行,没有的话会一直阻塞
+		ThreadPoolExecutor executorService = (ThreadPoolExecutor) Executors.newFixedThreadPool(1);
+		executorService.execute(()->{
+			System.out.println(1);
+		});
+		executorService.execute(()->{
+			System.out.println(2);
+		});
+
 
 	}
 }
