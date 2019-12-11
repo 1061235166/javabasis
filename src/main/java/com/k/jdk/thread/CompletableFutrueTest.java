@@ -17,7 +17,7 @@ public class CompletableFutrueTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
 //        test1();
 //        test2();
-		test4();
+		test5();
     }
 
     public static void test1() throws InterruptedException, ExecutionException, TimeoutException {
@@ -117,5 +117,17 @@ public class CompletableFutrueTest {
 		.thenApply(resultB -> resultB + " resultC")
 		.thenApply(resultC -> resultC + " resultD");
     	System.out.println(future.join());
+	}
+
+	static void test5(){
+		CompletableFuture<Void> future =
+				CompletableFuture
+						.runAsync(() -> System.out.println(111111111))
+						.thenRun(()-> System.out.println(222222))
+						.whenComplete((a,b)-> System.out.println(333));
+		future.join();
+
+		CompletableFuture<Integer> completableFuture = CompletableFuture.completedFuture(4444);
+		System.out.println(completableFuture.join());
 	}
 }
