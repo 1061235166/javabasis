@@ -40,5 +40,7 @@ public class Intern {
 		}else {
 			//return stringFromPool;
 		}
+		String ss="hello";
+		System.out.println(new String("hello").intern()==ss);
     }
 }
