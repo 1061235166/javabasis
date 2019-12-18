@@ -24,5 +24,8 @@ public class MyClassLoader extends ClassLoader {
 	public static void main(String[] args) throws ClassNotFoundException {
 		Class<?> aClass = Class.forName("java.lang.String", true, new MyClassLoader());
     	System.out.println(aClass);
+		//系统的appclassloader
+		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+		System.out.println(classLoader.getClass());
 	}
 }
