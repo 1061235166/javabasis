@@ -48,3 +48,15 @@ pfmerge可以把两个hll数据的结果合并到一起
 >1.大多数操作都是在内存里完成,而且redis是一个key-value类似于hashmap的结构,增删改查复杂度都是O(1),
 >2.是单线程,没有加锁解锁,切换上下文的开销
 >3.
+- redis数据淘汰策略
+>1.volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰
+ 
+>2.volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰
+ 
+>3.volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰
+ 
+>4.allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰
+ 
+>5.allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰
+ 
+>6.no-enviction（驱逐）：禁止驱逐数据

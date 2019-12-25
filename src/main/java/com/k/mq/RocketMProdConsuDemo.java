@@ -39,7 +39,7 @@ public class RocketMProdConsuDemo {
 		} catch (InterruptedException e) {
 
 		}
-		executor.execute(new OrderConsumer());
+		//executor.execute(new OrderConsumer());
 	}
 
 	static class OrderProducer implements Runnable{
@@ -52,13 +52,14 @@ public class RocketMProdConsuDemo {
 //				producer.createTopic("","order_topic1",10);
 				producer.start();
 				for(int i=0;i<10;i++){
-					Message message = new Message("order_topic1","tag1","11",(i+"order_demo").getBytes());
+					Message message = new Message("hello","tag1",(i+"hello can you consume it?").getBytes());
           			System.out.println(new String(message.getBody()));
 					SendResult send = producer.send(message);
           			System.out.println(send.getSendStatus());
+          			System.out.println(send.getMsgId());
 				}
 				downLatch.countDown();
-				producer.shutdown();
+
 			} catch (MQClientException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
@@ -76,15 +77,17 @@ public class RocketMProdConsuDemo {
 		@Override
 		public void run() {
       		System.out.println("OrderConsumer run");
-			DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("order_demo");
+			DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("order_demo2");
 			consumer.setNamesrvAddr("localhost:9876");
 			try {
-				consumer.subscribe("order_topic1","tag1");
+				consumer.subscribe("hello","tag1");
 				consumer.setMessageListener(new MessageListenerOrderly() {
 					@Override
 					public ConsumeOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
 						for (MessageExt s:msgs){
 							System.out.println(new String(s.getBody()));
+							String msgId = s.getMsgId();
+							System.out.println(msgId);
 						}
 						System.out.println(msgs.size());
 						return ConsumeOrderlyStatus.SUCCESS;
@@ -93,8 +96,6 @@ public class RocketMProdConsuDemo {
 				consumer.start();
 			} catch (MQClientException e) {
 				e.printStackTrace();
-			}finally{
-				consumer.shutdown();
 			}
 		}
 	}

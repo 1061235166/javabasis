@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * Created by k on 2018/11/18.
@@ -15,16 +16,19 @@ public class ForkJoinTest {
         ForkJoinPool forkJoinPool = new ForkJoinPool();
 
 
-        int[]array = new int[]{13,2,42,34,21,4,657,5,67,3,234,546,7,789,2,4,345,765,47,3,4,23,42,34,3,46,7,5654,12,3};
-//        int newL = array.length-10;
-//        int []newA=new int[newL];
-//        System.arraycopy(array,10,newA,0,newL);
+//        int[]array = new int[]{13,2,42,34,21,4,657,5,67,3,234,546,7,789,2,4,345,765,47,3,4,23,42,34,3,46,7,5654,12,3};
+////        int newL = array.length-10;
+////        int []newA=new int[newL];
+////        System.arraycopy(array,10,newA,0,newL);
+////        System.out.println(Arrays.toString(array));
+////        System.out.println(Arrays.toString(newA));
+//
+//        new ArraySort(array).invoke();
+//
 //        System.out.println(Arrays.toString(array));
-//        System.out.println(Arrays.toString(newA));
+		Object o = new Object();
 
-        new ArraySort(array).invoke();
-
-        System.out.println(Arrays.toString(array));
+    	System.out.println("end");
     }
 }
 class ArraySort extends RecursiveAction{

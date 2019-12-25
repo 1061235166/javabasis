@@ -27,5 +27,6 @@ public class MyClassLoader extends ClassLoader {
 		//系统的appclassloader
 		ClassLoader classLoader = ClassLoader.getSystemClassLoader();
 		System.out.println(classLoader.getClass());
+
 	}
 }
