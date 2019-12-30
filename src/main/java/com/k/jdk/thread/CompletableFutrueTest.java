@@ -1,8 +1,6 @@
 package com.k.jdk.thread;
 
 
-import com.google.common.collect.Maps;
-
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -17,7 +15,8 @@ public class CompletableFutrueTest {
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
 //        test1();
 //        test2();
-		test5();
+//		test5();
+		futureTasktest();
     }
 
     public static void test1() throws InterruptedException, ExecutionException, TimeoutException {
@@ -129,5 +128,25 @@ public class CompletableFutrueTest {
 
 		CompletableFuture<Integer> completableFuture = CompletableFuture.completedFuture(4444);
 		System.out.println(completableFuture.join());
+	}
+
+
+	/**
+	 * 任务取消后尝试获取结果测试类
+	 * @throws ExecutionException
+	 * @throws InterruptedException
+	 */
+	static void futureTasktest() throws ExecutionException, InterruptedException {
+		ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+		Future<?> submit = service.submit(new Callable<String>() {
+			@Override
+			public String call() throws Exception {
+				TimeUnit.SECONDS.sleep(5l);
+				return "result";
+			}
+		});
+		TimeUnit.SECONDS.sleep(1l);
+		submit.cancel(true);
+		System.out.println(submit.get());
 	}
 }

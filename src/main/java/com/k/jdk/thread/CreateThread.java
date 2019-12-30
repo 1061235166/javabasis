@@ -21,7 +21,7 @@ public class CreateThread {
 		thread.setDaemon(true);
 		thread.start();
     	System.out.println(thread.isDaemon());
-    	System.out.println("main start");
+    	System.out.println("main serverStart");
     	System.out.println(Thread.currentThread().isDaemon());
 	}
 
