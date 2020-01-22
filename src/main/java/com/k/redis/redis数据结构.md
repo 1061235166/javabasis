@@ -60,3 +60,11 @@ pfmerge可以把两个hll数据的结果合并到一起
 >5.allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰
  
 >6.no-enviction（驱逐）：禁止驱逐数据
+
+
+
+基础数据结构
+string,set,zset,list,hash
+
+高级数据结构
+bitset,hyperhyperlog,geohash,pubsub,transaction(使用muilt开始，exec提交，discard取消，事务是非原子性的，其中一条失败不会导致之前的回滚，之后的也会继续进行)
