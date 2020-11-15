@@ -1,0 +1,7 @@
+1.请求转发器dispatcherServlet收到请求以后，执行service方法
+2.通过handlermapping获取请求对应的handler
+3.handleradapter执行对应的handler
+4.handler执行逻辑
+5.handler返回modelandview给dispatcherServlet
+6.viewresover处理modelandview
+7.返回结果给dispatcherServlet进行试图渲染
